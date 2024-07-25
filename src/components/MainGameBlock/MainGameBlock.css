@@ -1,0 +1,230 @@
+/* MainGameBlock.css */
+
+.game-container {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  background-image: url("/public/cloud.svg");
+  background-position: bottom;
+  background-repeat: repeat-x; /* Repeat horizontally */
+  /* justify-content: center; */
+  align-items: center;
+  overflow: hidden;
+  animation: moveClouds 100s linear infinite; /* Apply the animation */
+}
+
+.animation-stopped {
+  animation-play-state: paused; /* Pause the animation */
+}
+
+@keyframes moveClouds {
+  0% {
+    background-position: 0 bottom;
+  }
+  100% {
+    background-position: -3000px bottom; /* Adjust this value based on your cloud image width */
+  }
+}
+
+.star {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation-timeline: auto;
+  animation-range-start: normal;
+  animation-range-end: normal;
+  background: url("/public/star.png") 0% 0% / contain repeat-x;
+  animation: 370370s linear 0s infinite normal none running starMove;
+}
+
+.game-container::before,
+.game-container::after {
+  content: "";
+  position: absolute;
+}
+.game-container::before {
+  background-image: url("/public/sidebar.svg");
+  background-position: left;
+  background-repeat: no-repeat repeat;
+  top: 0;
+  left: 0;
+  width: 20px; /* Adjust width as per your sidebar image */
+  height: 100%; /* Make the sidebar take full height of the game container */
+  z-index: 1; /* Ensure sidebar appears behind game content */
+  animation: topTobottom 20s linear 0s infinite normal none;
+  border-right: 1px solid rgb(38, 28, 74);
+}
+.game-container::after {
+  background-image: url("/public/bottombar.svg");
+  background-position: center bottom;
+  bottom: 0;
+  left: 20px;
+  width: 100%;
+  height: 20px;
+  z-index: 1;
+  animation: slide 20s linear 0s infinite normal none;
+  border-top: 1px solid rgb(38, 28, 74);
+}
+
+@keyframes slide {
+  0% {
+    background-position-x: 100%;
+  }
+  100% {
+    background-position-x: 0%;
+  }
+}
+
+@keyframes topTobottom {
+  0% {
+    background-position-y: 0%;
+  }
+  100% {
+    background-position-y: 100%;
+  }
+}
+
+@keyframes starMove {
+  100% {
+    background-position-x: -1e+06px;
+}
+}
+
+.animation-stopped::before,
+.animation-stopped::after {
+  animation-play-state: paused;
+}
+/* .game-container.loading {
+  background-image: none;
+}
+ */
+.game-container.loading::before,
+.game-container.loading::after,
+.game-container.loading {
+  animation: none !important;
+}
+
+.loading-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-container img {
+  width: 100px;
+  height: 100px;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+.game-text {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 34px;
+  margin: 20px 0;
+  color: white;
+  max-width: 450px;
+  font-weight: bold;
+}
+.svg-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@keyframes flyConstant {
+  0% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 110;
+  }
+}
+
+.shadow {
+  fill: url(#grad_shadow);
+}
+
+.fly-away {
+  animation: fly-away 10s forwards; /* Apply the fly-away animation */
+}
+
+.paused {
+  animation-play-state: paused; /* Pause the path and shadow animations */
+}
+
+/* COFFECIENT  */
+
+.game-center-text {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.current-coffecient {
+  font-style: normal;
+  font-size: 70.1882px;
+  line-height: 83px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(148, 78, 245);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.animation-coffecient {
+  animation: 1.2s ease 0s 1 normal none running eeiVJC;
+}
+
+@keyframes eeiVJC {
+ 10% {
+  opacity: 0.5;
+ }
+ 15% {
+  opacity: 1;
+ }
+ 20% {
+  opacity: 0.5;
+ }
+ 25% {
+  opacity: 1;
+
+ }
+ 30% {
+  opacity: 0.5;
+ }
+ 35% {
+  opacity: 1;
+ }
+ 40% {
+  opacity: 0.5;
+ }
+ 45% {
+  opacity: 1;
+ }
+ 50% {
+  transform: scale(1.15);
+  opacity: 0.5;
+ }
+ 55% {
+  opacity: 1;
+ }
+ 100% {
+  transform: scale(1);
+ }
+}

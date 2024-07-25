@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+@font-face {
+  font-display: swap;
+  font-family: "Rocketfont";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/public/fonts/Rocketfont-latin-ext.1054180f7.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Rocketfont";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/public/fonts/Rocketfont-latin.6b82a4379.woff2") format("woff2");
+}
+
+.main {
+  display: flex;
+}
+
+.stavka {
+  width: 618.5px;
+  height: 124px;
+  background: linear-gradient(90deg, rgb(31, 24, 61) 0%, rgb(38, 31, 77) 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
+  border-radius: 14px;
+  margin-left: 11px;
+  margin-bottom: 15px;
+}
+
+.one {
+  display: flex;
+}
+
+.x {
+  color: rgb(148, 138, 197);
+  margin-right: 3px;
+}
+
+.keff {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  width: 108px;
+  height: 28px;
+  margin: 7px;
+  margin-left: 292px;
+  font-family: Manrope;
+  letter-spacing: 0.4px;
+  font-size: 11.6px;
+  font-weight: 500;
+  color: rgb(250, 250, 250);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  font-family: Manrope;
+  font-size: 11px;
+  color: rgb(250, 250, 250);
+  margin-right: 1px;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  width: 24px;
+  height: 24px;
+  margin: 9px;
+}
+
+.only {
+  background: none center center no-repeat rgb(38, 31, 77);
+  border-radius: 7px;
+  width: 18.5px;
+  height: 18px;
+}
+
+.background {
+  width: 100%;
+  height: 82px;
+  background: linear-gradient(90deg, rgb(36, 29, 71) 0%, rgb(43, 35, 87) 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px -4px 24px;
+  border-radius: 14px;
+}
+
+.flex {
+  display: flex;
+}
+
+.number {
+  width: 296.5px;
+  height: 64px;
+  background: rgb(27, 21, 54);
+  border-radius: 10px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  margin-left: 9px;
+  margin-right: 7px;
+}
+
+.onein {
+  height: 33.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(38, 31, 77);
+}
+
+.img {
+  width: 23.5px;
+  height: 23.5px;
+  background: rgb(35, 29, 71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.input {
+  color: white;
+  font-family: "Rocketfont";
+  font-size: 14.5px;
+  margin-left: -5px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.button {
+  width: 296.5px;
+  height: 64px;
+  background: rgb(27, 21, 54);
+  border-radius: 12px;
+  margin-top: 9px;
+  margin-right: 9px;
+  margin-bottom: 9px;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  width: 91px;
+  height: 2.8px;
+  bottom: 15px;
+  left: calc(50% - 57.5px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+}
+
+.buttonTWO {
+  width: 296.5px;
+  height: 64px;
+  background: rgb(27, 21, 54);
+  border-radius: 12px;
+  margin-top: 9px;
+  margin-right: 9px;
+  margin-bottom: 9px;
+}
+
+.buttonTWO::after {
+  content: "";
+  position: absolute;
+  width: 91px;
+  height: 2.8px;
+  bottom: 15px;
+  left: calc(50% - -572.2px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+}
+
+.stavkabtn {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.7px;
+  margin-left: 2.7px;
+  width: 98.2%;
+  height: 91%;
+  border-radius: 10px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+  box-shadow: rgba(25, 201, 245, 0.1) 0px 10px 20px, rgba(92, 36, 252, 0.1) 0px 10px 20px, rgb(148, 78, 245) 0px -2px 4px inset, rgba(148, 78, 245, 0.6) 0px -8px 8px inset;
+  cursor: pointer;
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  font-family: "Rocketfont";
+  font-size: 13.5px;
+  letter-spacing: 0.07em;
+}
+
+.cancelBtn {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.7px;
+  margin-left: 2.7px;
+  width: 98.2%;
+  height: 91%;
+  border-radius: 10px;
+  background: linear-gradient(263.87deg, rgb(245, 78, 118) 0%, rgb(252, 36, 75) 100%);
+  box-shadow: rgba(245, 25, 65, 0.1) 0px 10px 20px, rgba(252, 36, 101, 0.1) 0px 10px 20px, rgb(245, 78, 118) 0px -2px 4px inset, rgba(245, 78, 128, 0.6) 0px -8px 8px inset;
+  cursor: pointer;
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  font-family: "Rocketfont";
+  font-size: 13.5px;
+  letter-spacing: 0.07em;
+}
+
+.withdrawBtn {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.7px;
+  margin-left: 2.7px;
+  width: 98.2%;
+  height: 91%;
+  border-radius: 10px;
+  background: linear-gradient(263.87deg, rgb(226, 57, 35) 0%, rgb(233, 103, 64) 100%);
+  box-shadow: rgba(25, 201, 245, 0.1) 0px 10px 20px, rgba(92, 36, 252, 0.1) 0px 10px 20px, rgb(148, 78, 245) 0px -2px 4px inset, rgba(148, 78, 245, 0.6) 0px -8px 8px inset;
+  cursor: pointer;
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  font-family: "Rocketfont";
+  font-size: 13.5px;
+  letter-spacing: 0.07em;
+}
+
+
+.twoin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.twoin div {
+  cursor: pointer;
+}
+.numback {
+  font-family: Manrope;
+  margin-left: 3.5px;
+  margin-top: 4.5px;
+  width: 76px;
+  height: 22px;
+  color: rgb(148, 138, 197);
+  background: rgb(35, 29, 71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 9px;
+}
+
+.numback:first-child {
+  margin-left: 5px;
+}
+
+.numback:last-child {
+  margin-right: 5px;
+}

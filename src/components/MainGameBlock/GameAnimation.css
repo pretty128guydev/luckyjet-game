@@ -1,0 +1,137 @@
+.svg_container {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  position: relative;
+}
+
+.dOlAUE {
+  transition: all 0.32s ease 0s;
+}
+
+.svg_shadow {
+  width: 80%;
+  height: 120%;
+}
+.rocket-images {
+  transform: translate(-20%, -20%);
+}
+
+.rocket-images.fly-away {
+  animation: fly-away 1s forwards !important;
+}
+
+.rocket-images .image-group{
+  position: relative;
+  display: grid;
+  place-items: center;
+  -webkit-box-align: center;
+  width: 100%;
+  padding-top: 100%;
+  transition: all 0.32s ease 0s;
+  animation: flyConstant 4s infinite;
+}
+
+.rocket{
+  position: absolute;
+  width: 24%;
+  margin-top: 62%;
+  margin-left: -64%;
+  transform: rotate(-138deg);
+  transform-origin: center center;
+}
+
+.fire{
+  position: absolute;
+  width: 50%;
+  margin-top: 45%;
+  margin-left: -50%;
+  transform: rotate(36deg);
+}
+
+.robot{
+  position: absolute;
+  transition: all 0.32s ease 0s;
+  width: 50%;
+}
+
+@keyframes flyConstant {
+  10% {
+    transform: translateY(2px);
+  }
+
+  20% {
+    transform: translateY(-2px);
+  }
+  
+  /*
+  20% {
+    transform: translateX(2px) translateY(-2px);
+  }
+
+  25% {
+    transform: translateX(2px) translateY(-2px);
+  }
+
+  30% {
+    transform: translateX(2px) translateY(-2px);
+  }
+
+  35% {
+    transform: translateX(2px) translateY(-2px);
+  }
+
+  40% {
+    transform: translateX(-2px) translateY(2px);
+  } */
+
+  /* 45% {
+    transform: translateX(2px) translateY(-2px);
+  } */
+
+  40% {
+    transform: translateX(-20px) translateY(12px);
+  }
+
+  /* 55% {
+    transform: translateX(-2px) translateY(2px);
+  }
+
+  60% {
+    transform: translateX(-2px) translateY(2px);
+  } */
+
+  75% {
+    transform: translateX(-10px) translateY(-12px);
+  }
+
+  85% {
+    transform: translateX(-8px) translateY(-5px);
+  }
+
+  100% {
+    transform: translateX(-2px) translateY(2px);
+  }
+}
+@keyframes fly-away {
+  /* fromm current positon they should move ahead */
+
+  100% {
+    transform: translateX(100vw) translateY(-257px);
+  }
+}
+
+.rocket-animation-container {
+  overflow: hidden;
+}
+/* 
+.rocket-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

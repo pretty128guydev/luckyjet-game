@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.history {
+  height: 93vh;
+  width: 19.2vw;
+  border-right: 1px solid rgb(28, 21, 55);
+  font-family: Manrope;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgb(17, 13, 33);
+  border-radius: 10px;
+  width: 276px;
+  height: 33px;
+  margin: 9px;
+  margin-left: 14.5px;
+  margin-bottom: 14px;
+}
+
+.active {
+  color: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 91px;
+  height: 28px;
+  font-weight: 500;
+  letter-spacing: 0.43px;
+}
+
+.no {
+  color: rgb(148, 138, 197);
+  font-size: 11px;
+  margin-left: 20px;
+}
+
+.notwo {
+  color: rgb(148, 138, 197);
+  font-size: 11px;
+  margin-right: 20px;
+}
+
+.bet {
+  color: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgb(28, 22, 56) 0%, rgb(38, 31, 77) 100%);
+  border-radius: 9px;
+  height: 29px;
+  margin-left: 14.5px;
+  width: 17.6vw;
+  margin-top: 7.3px;
+  margin-bottom: 7.3px;
+}
+
+.betDone {
+  background: rgba(148, 78, 245, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
+  border: 1px solid rgba(148, 78, 245, 0.5);
+  color: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 9px;
+  height: 29px;
+  margin-left: 14.5px;
+  width: 17.6vw;
+  margin-top: 7.3px;
+  margin-bottom: 7.3px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 11px;
+  color: rgb(148, 138, 197);
+  font-size: 11px;
+  font-family: Manrope;
+}
+
+.first {
+  color: rgb(223, 229, 242);
+  font-size: 9px;
+  margin-left: 2px;
+  margin-right: -8px;
+}
+
+.iks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(250, 250, 250);
+  border-radius: 7px;
+  background: rgb(117, 62, 194);
+  height: 23px;
+  width: 53px;
+  font-size: 10px;
+}
+
+.last {
+  color: rgb(223, 229, 242);
+  margin-right: 5px;
+  margin-left: -7px;
+  font-size: 8px;
+}
+
+.nope {
+  margin-right: 22px;
+  margin-left: 11px;
+}
+
+.sb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(17, 13, 33);
+  width: 42px;
+  height: 22px;
+  border-radius: 7px;
+  margin-right: 2px;
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 5px;
+  width: 18.5px;
+  height: 18.5px;
+  margin-right: 1px;
+}
+
+.verify {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 5px;
+  width: 18.5px;
+  height: 18.5px;
+  margin-left: 1px;
+}

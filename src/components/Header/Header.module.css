@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.parent {
+  display: flex;
+  align-items: stretch;
+  height: 16px;
+}
+
+.left {
+  position: relative;
+  margin: 23px 82px;
+  width: 138px;
+  height: 100%;
+}
+
+.left::after {
+  content: "";
+  position: absolute;
+  top: -23px;
+  bottom: -23px;
+  right: -82px;
+  width: 1px;
+  background: rgb(28, 21, 55);
+}
+
+.right {
+  display: flex;
+  margin: 15px 1px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(17, 13, 33);
+  border-radius: 10px;
+  width: 69px;
+  height: 33px;
+  margin-right: 11px;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+}
+
+.music {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+}
+
+.separator {
+  width: 1.5px; /* Ширина линии */
+  height: 15px; /* Высота линии */
+  background-color: rgb(35, 29, 71); /* Цвет линии */
+  margin: 0 3px; /* Отступы */
+  border-radius: 1px;
+}
+
+.two {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(17, 13, 33);
+  border-radius: 10px;
+  width: 253px;
+  height: 33px;
+  margin-right: 11px;
+}
+
+.what {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 102px;
+  height: 28px;
+}
+
+.money {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 103px;
+  height: 28px;
+}
+
+.collection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+}
+
+.text {
+  color: white;
+  font-size: 11px;
+  margin-left: 5px;
+  font-family: Manrope;
+}
+
+.textW {
+  color: white;
+  font-size: 11px;
+  margin-left: 7px;
+  font-family: Manrope;
+}
+
+.three {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(17, 13, 33);
+  border-radius: 10px;
+  width: 33px;
+  height: 33px;
+}
+
+.chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(35, 29, 71);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+}
+
+.line {
+  display: block;
+  width: 100%; /* Ширина на всю доступную ширину */
+  height: 1px;
+  background: rgb(28, 21, 55);
+  margin-top: 46px;
+  padding: 0; /* Убираем внутренние отступы */
+}
