@@ -9,7 +9,7 @@ const GameAnimation = ({ flyAway, animationKey }) => {
     const [distance, setDistance] = useState({ x: 0, y: 0 });
     const rocketRef = useRef(null);
     const pathRef = useRef(null);
-    
+
 
     useEffect(() => {
         const totalFrames = 100;
@@ -17,27 +17,37 @@ const GameAnimation = ({ flyAway, animationKey }) => {
         let animationFrameId;
         let progress;
         let flag = 0;
-        
-        setInterval(function(){
-            if(Math.random() > 0.5) {
+
+        setInterval(function () {
+            if (Math.random() > 0.5) {
                 flag = 0;
             } else {
                 flag = 1;
             }
         }, 1000)
-        
+
         const animatePath = () => {
             // Math.random() * 0.2 + 0.8;
             if (frame <= totalFrames) {
                 progress = frame / totalFrames
             } else {
-                if(flag) {
-                    progress += 0.0004 
+                if (flag) {
+                    if (progress <= 0.9893) {
+                        progress += 0.0007
+                    } else {
+                        flag = 0;
+                        progress -= 0.0007
+                    }
                 } else {
-                    progress -= 0.0004
+                    if (progress >= 0.9107) {
+                        progress -= 0.0007
+                    } else {
+                        flag = 1;
+                        progress += 0.0007
+                    }
                 }
-                
-            }   
+            }
+            console.log("flag ---> " + flag)
             // else { 
             //     let speed = totalFrames / pow(e, frame); 
 
@@ -56,7 +66,7 @@ const GameAnimation = ({ flyAway, animationKey }) => {
             //             progress -= speed;
             //         }
             //     }
-                
+
             // }
             const controlPointX = 470.2918182957628 * progress;
             const controlPointY = frame <= totalFrames ? 347 : progress * 347;
@@ -67,6 +77,8 @@ const GameAnimation = ({ flyAway, animationKey }) => {
 
             setPathD(`M 0 347 Q ${controlPointX} ${controlPointY} ${endPointX} ${endPointY}`);
             setRocketPosition({ x: endPointX * 1.5 - 30, y: endPointY + 130 })
+            // console.log("progress ---> " + progress)
+            // console.log("frame ---> " + frame)
 
             const shadowOffset = 5;
             const shadowControlPointX = controlPointX + shadowOffset;
