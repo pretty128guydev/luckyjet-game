@@ -29,7 +29,7 @@
   width: 100%;
   padding-top: 100%;
   transition: all 0.32s ease 0s;
-  animation: flyConstant 4s infinite;
+  /* animation: flyConstant 4s infinite; */
 }
 
 .rocket{
@@ -55,7 +55,7 @@
   width: 50%;
 }
 
-@keyframes flyConstant {
+/* @keyframes flyConstant {
   10% {
     transform: translateY(2px);
   }
@@ -64,7 +64,7 @@
     transform: translateY(-2px);
   }
   
-  /*
+  
   20% {
     transform: translateX(2px) translateY(-2px);
   }
@@ -83,23 +83,23 @@
 
   40% {
     transform: translateX(-2px) translateY(2px);
-  } */
+  }
 
-  /* 45% {
+  45% {
     transform: translateX(2px) translateY(-2px);
-  } */
+  }
 
   40% {
     transform: translateX(-20px) translateY(12px);
   }
 
-  /* 55% {
+  55% {
     transform: translateX(-2px) translateY(2px);
   }
 
   60% {
     transform: translateX(-2px) translateY(2px);
-  } */
+  }
 
   75% {
     transform: translateX(-10px) translateY(-12px);
@@ -112,7 +112,8 @@
   100% {
     transform: translateX(-2px) translateY(2px);
   }
-}
+} */
+
 @keyframes fly-away {
   /* fromm current positon they should move ahead */
 
