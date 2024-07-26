@@ -59,7 +59,7 @@ const GameAnimation = ({ flyAway, animationKey }) => {
                 
             // }
             const controlPointX = 470.2918182957628 * progress;
-            const controlPointY = frame <= totalFrames ? progress : progress * 347;
+            const controlPointY = frame <= totalFrames ? 347 : progress * 347;
 
             const floatingOffset = Math.sin(progress * Math.PI * 2) * 20;
             const endPointX = 637.9377274436442 * progress + distance.x;
