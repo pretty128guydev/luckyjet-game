@@ -8,7 +8,7 @@ const GameBlock = () => {
   return (
     <div className={style.game}>
       <MainGameBlock />
-      <ButtonGameBlock />
+      {/* <ButtonGameBlock /> */}
     </div>
   );
 };

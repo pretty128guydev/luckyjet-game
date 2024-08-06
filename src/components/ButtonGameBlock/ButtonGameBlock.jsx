@@ -5,6 +5,7 @@ import { decreaseMoney } from "../../store/actions/moneyActions";
 import usePolling from "../../hooks/usePolling";
 import { fetchHistoryData } from "../../store/actions/historyActions";
 import { saveScore } from "../../store/actions/scoreActions";
+import { saveWithdrawInfo } from "../../store/actions/scoreActions";
 
 
 const ButtonGameBlock = () => {
@@ -20,6 +21,7 @@ const ButtonGameBlock = () => {
   const dispatch = useDispatch();
   const historyData = useSelector((state) => state.history.historyData);
   const current_amount = useSelector((state) => state.money.currentMoney);
+  const current_coefficient = useSelector((state) => state.score.coefficient)
 
   usePolling(() => dispatch(fetchHistoryData()), 1000);
 
@@ -27,7 +29,8 @@ const ButtonGameBlock = () => {
     if (historyData?.state === "flying" && status !== "START") {
       setStatus("WITHDRAW");
     }
-    if (historyData?.state === "ending" && status === "WITHDRAW") {
+    // console.log("status = ", status, "history = ", historyData?.state, "current_coefficient = ", current_coefficient, "history.current = ", historyData?.current_coefficients[0])
+    if (historyData?.state === "ending" && status === "WITHDRAW" && current_coefficient === historyData?.current_coefficients[0]) {
       setStatus("START");
 
       const scoreList = {
@@ -56,11 +59,6 @@ const ButtonGameBlock = () => {
     } else if (historyData?.state === "waiting") {
       setStatus("WITHDRAW");
     }
-
-    if (status === "CANCEL" || status === "WITHDRAW") {
-      setStatus("START");
-    }
-
   };
   return (
     <div className={style.main}>

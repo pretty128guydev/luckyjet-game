@@ -4,6 +4,8 @@
 const initialState = {
   scoreList: [],
   roundList: [],
+  withdrawInfo: {},
+  coefficient: 0,
 };
 
 const scoreReducer = (state = initialState, action) => {
@@ -18,6 +20,17 @@ const scoreReducer = (state = initialState, action) => {
         ...state,
         roundList: [...state.roundList, action.payload]
       };
+    case "SAVE_WITHDRAWINFO":
+      return {
+        ...state,
+        withdrawInfo: action.info
+      }
+    case "SAVE_COEFFICIENT":
+      return {
+        ...state,
+        coefficient: action.current
+      }
+      
     default:
       return state;
   }

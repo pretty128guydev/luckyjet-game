@@ -219,6 +219,79 @@
   /* Apply the fly-away animation */
 }
 
+.toast {
+  top: 24px;
+  left: calc(50% - 138px);
+  position: absolute;
+  z-index: 2001;
+  will-change: transform;
+}
+
+.win-notify {
+  height: 65px;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 8px;
+  background: rgb(41, 24, 84);
+  border-radius: 16px;
+  border: 1px solid rgb(120, 57, 248);
+}
+
+.eGpkga {
+  margin-left: 6px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.eGpkga span {
+  font-family: Manrope;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: -0.0011em;
+  font-weight: normal;
+  color: rgb(223, 229, 242);
+}
+
+.eGpkga h2 {
+  font-family: Rocketfont;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0px;
+  color: white;
+  font-weight: normal;
+}
+
+.bjRgBy {
+  width: 132px;
+  height: 49px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%), rgb(117, 62, 194);
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.bjRgBy span{
+  font-family: Manrope;
+  font-size: 12px;
+  line-height: 26px;
+  letter-spacing: -0.0023em;
+  font-weight: normal;
+}
+
+.bjRgBy h2 {
+  font-family: Rocketfont;
+  padding-top: 2px;
+  font-size: 16px;
+  margin: 1px 0px -1px;
+  line-height: 28px;
+  height: 21px;
+  font-weight: normal;
+}
+
 .paused {
   animation-play-state: paused;
   /* Pause the path and shadow animations */

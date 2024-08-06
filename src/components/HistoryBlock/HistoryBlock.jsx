@@ -52,10 +52,10 @@ const HistoryBlock = () => {
         {activeTab === 'tab-1' && my_score_list.length > 0 && my_score_list.map((scoreList) => {
           return (
             <div className={style.betDone}>
-              <div className={style.logo}>{scoreList?.time}</div>
-              <div className={style.first}>{scoreList?.consumAmount} ₽</div>
-              <div className={style.iks}>{scoreList?.coefficient}x</div>
-              <div className={style.last}>{scoreList?.earnAmount} ₽</div>
+              <div className={style.time}>{scoreList?.time}</div>
+              <div className={style.price}>{scoreList?.consumAmount} ₽</div>
+              <div className={`${2 > Math.floor(scoreList?.coefficient) >= 1 ? style.low : 10 > Math.floor(scoreList?.coefficient) >= 2 ? style.medium : style.high}`}>{scoreList?.coefficient}x</div>
+              <div className={style.cashOut}>{scoreList?.earnAmount > 0 ? scoreList?.earnAmount + '$' : '-'}</div>
               <div className={style.sb}>
                 <div className={style.send}>
                   <img src="/public/send.svg" alt="" />
@@ -109,156 +109,6 @@ const HistoryBlock = () => {
           )
         }
       </div>
-
-      {/* <div className={style.betDone}>
-        <div className={style.logo}>15:16:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>7.00x</div>
-        <div className={style.last}>7 000.00 ₽</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.betDone}>
-        <div className={style.logo}>15:16:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>7.00x</div>
-        <div className={style.last}>7 000.00 ₽</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.betDone}>
-        <div className={style.logo}>15:16:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>7.00x</div>
-        <div className={style.last}>7 000.00 ₽</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.bet}>
-        <div className={style.logo}>15:19:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>9.00x</div>
-        <div className={style.nope}>-</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.betDone}>
-        <div className={style.logo}>15:16:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>7.00x</div>
-        <div className={style.last}>7 000.00 ₽</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.betDone}>
-        <div className={style.logo}>15:17:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>2.40x</div>
-        <div className={style.last}>2 400.00 ₽</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.bet}>
-        <div className={style.logo}>15:19:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>9.00x</div>
-        <div className={style.nope}>-</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.bet}>
-        <div className={style.logo}>15:19:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>9.00x</div>
-        <div className={style.nope}>-</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.bet}>
-        <div className={style.logo}>15:19:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>9.00x</div>
-        <div className={style.nope}>-</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className={style.bet}>
-        <div className={style.logo}>15:26:44</div>
-        <div className={style.first}>1 000.00 ₽</div>
-        <div className={style.iks}>1.20x</div>
-        <div className={style.nope}>-</div>
-        <div className={style.sb}>
-          <div className={style.send}>
-            <img src="/public/send.svg" alt="" />
-          </div>
-          <div className={style.verify}>
-            <img src="/public/verify.svg" alt="" />
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

@@ -1,0 +1,588 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+@font-face {
+  font-display: swap;
+  font-family: "Rocketfont";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/public/fonts/Rocketfont-latin-ext.1054180f7.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Rocketfont";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/public/fonts/Rocketfont-latin.6b82a4379.woff2") format("woff2");
+}
+
+.main {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 12px;
+  padding: 12px 12px 16px;
+  position: relative;
+  grid-area: make-bet;
+}
+
+.stavka {
+  position: relative;
+  display: grid;
+  grid-template-rows: 46px 91px;
+}
+
+.slotHeader {
+  min-height: 70px;
+  background: linear-gradient(90deg, rgb(31, 24, 61) 0%, rgb(38, 31, 77) 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
+  border-radius: 14px;
+  padding: 8px 10px 32px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: max-content max-content 1fr;
+  gap: 12px;
+}
+
+.autoBet {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 10px;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.autoBetCheckBox {
+  width: 26px;
+  height: 26px;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.autoBetCheckBox::after {
+  display: block;
+  content: "";
+  border-radius: 7px;
+  width: 20px;
+  height: 20px;
+  background: none center center no-repeat rgb(38, 31, 77);
+}
+
+.autoBetText {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  color: rgb(250, 250, 250);
+}
+
+.autoWithdrawal {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 10px;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.autoWithdrawalCheckBox {
+  width: 26px;
+  height: 26px;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.autoWithdrawalCheckBox::after {
+  display: block;
+  content: "";
+  border-radius: 7px;
+  width: 20px;
+  height: 20px;
+  background: none center center no-repeat rgb(38, 31, 77);
+}
+
+.autoWithdrawalText {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  color: rgb(250, 250, 250);
+}
+
+
+.coefInput {
+  justify-self: end;
+  width: 100%;
+  max-width: 120px;
+  gap: 4px;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+.jwCcuy {
+  font-family: Manrope;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: 0px;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-left: 12px;
+  opacity: 1;
+  transition: opacity 0.16s;
+  box-shadow: transparent 0px 0px 0px 1000px inset;
+  color: rgb(250, 250, 250) !important;
+}
+
+.iBYHtE {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  gap: 4px;
+  color: transparent;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.16s;
+}
+
+.betButtonGroup {
+  background: linear-gradient(90deg, rgb(36, 29, 71) 0%, rgb(43, 35, 87) 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px -4px 24px;
+  border-radius: 14px;
+  padding: 10px 10px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 71px;
+  gap: 8px;
+}
+
+.betAmountController {
+  background: rgb(27, 21, 54);
+  border-radius: 10px;
+  pointer-events: all;
+  transition: opacity 0.32s;
+}
+
+.top {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 26px 1fr 26px;
+  border-bottom: 1px solid rgb(38, 31, 77);
+  grid-template-rows: 1fr;
+}
+
+.minus {
+  grid-template-rows: 26px;
+}
+
+.currentAmount {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+.btnMinus {
+  display: grid;
+  position: relative;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 14px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 10px;
+  background: none;
+  height: auto;
+}
+
+.hSepGF {
+  padding: 0px;
+  min-width: 26px;
+  min-height: 26px;
+  color: rgb(148, 138, 197);
+  font-family: Manrope;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-align: center;
+
+  display: grid;
+  place-items: center;
+  -webkit-box-align: center;
+  width: 100%;
+  border-radius: 8px;
+  z-index: 1;
+  transition: opacity 0.32s, box-shadow 0.32s, background 0.16s;
+  background: rgb(35, 29, 71);
+}
+
+.plus {
+  grid-template-rows: 26px;
+}
+
+.bottom {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 5px;
+  gap: 4px;
+}
+
+.chnFhm {
+  grid-template-rows: 24px;
+  display: grid;
+  grid-auto-columns: 1fr;
+}
+
+.betAfter {
+  background: rgb(27, 21, 54);
+  border-radius: 14px;
+  height: 100%;
+  border: none;
+  padding: 3px;
+  position: relative;
+}
+
+.betAfter::after {
+  content: "";
+  position: absolute;
+  width: 101px;
+  height: 3px;
+  bottom: -10px;
+  left: calc(50% - 50.5px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+}
+
+
+
+
+
+
+
+.x {
+  color: rgb(148, 138, 197);
+  margin-right: 3px;
+}
+
+.keff {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  width: 108px;
+  height: 28px;
+  margin: 7px;
+  margin-left: 292px;
+  font-family: Manrope;
+  letter-spacing: 0.4px;
+  font-size: 11.6px;
+  font-weight: 500;
+  color: rgb(250, 250, 250);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  font-family: Manrope;
+  font-size: 11px;
+  color: rgb(250, 250, 250);
+  margin-right: 1px;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  width: 24px;
+  height: 24px;
+  margin: 9px;
+}
+
+.only {
+  background: none center center no-repeat rgb(38, 31, 77);
+  border-radius: 7px;
+  width: 18.5px;
+  height: 18px;
+}
+
+.background {
+  width: 100%;
+  height: 82px;
+  background: linear-gradient(90deg, rgb(36, 29, 71) 0%, rgb(43, 35, 87) 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px -4px 24px;
+  border-radius: 14px;
+}
+
+.flex {
+  display: flex;
+}
+
+.number {
+  width: 296.5px;
+  height: 64px;
+  background: rgb(27, 21, 54);
+  border-radius: 10px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  margin-left: 9px;
+  margin-right: 7px;
+}
+
+.onein {
+  height: 33.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(38, 31, 77);
+}
+
+.img {
+  width: 23.5px;
+  height: 23.5px;
+  background: rgb(35, 29, 71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.input {
+  color: white;
+  font-family: "Rocketfont";
+  font-size: 14.5px;
+  margin-left: -5px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.button {
+  width: 296.5px;
+  height: 64px;
+  background: rgb(27, 21, 54);
+  border-radius: 12px;
+  margin-top: 9px;
+  margin-right: 9px;
+  margin-bottom: 9px;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  width: 91px;
+  height: 2.8px;
+  bottom: 15px;
+  left: calc(50% - 57.5px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+}
+
+.buttonTWO {
+  width: 296.5px;
+  height: 64px;
+  background: rgb(27, 21, 54);
+  border-radius: 12px;
+  margin-top: 9px;
+  margin-right: 9px;
+  margin-bottom: 9px;
+}
+
+.buttonTWO::after {
+  content: "";
+  position: absolute;
+  width: 91px;
+  height: 2.8px;
+  bottom: 15px;
+  left: calc(50% - -572.2px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+}
+
+.stavkabtn {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  font-family: Rocketfont;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(250, 250, 250);
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  display: grid;
+  -webkit-box-pack: center;
+  place-content: center;
+  grid-auto-rows: max-content;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
+  box-shadow: rgba(25, 201, 245, 0.1) 0px 10px 20px, rgba(92, 36, 252, 0.1) 0px 10px 20px, rgb(148, 78, 245) 0px -2px 4px inset, rgba(148, 78, 245, 0.6) 0px -8px 8px inset;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  font-family: Rocketfont;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(250, 250, 250);
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  display: grid;
+  -webkit-box-pack: center;
+  place-content: center;
+  grid-auto-rows: max-content;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(263.87deg, rgb(245, 78, 118) 0%, rgb(252, 36, 75) 100%);
+  box-shadow: rgba(245, 25, 65, 0.1) 0px 10px 20px, rgba(252, 36, 101, 0.1) 0px 10px 20px, rgb(245, 78, 118) 0px -2px 4px inset, rgba(245, 78, 128, 0.6) 0px -8px 8px inset;
+  cursor: pointer;
+}
+
+.cancelAfter::after {
+  content: "";
+  position: absolute;
+  width: 101px;
+  height: 3px;
+  bottom: -10px;
+  left: calc(50% - 50.5px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(245, 78, 118) 0%, rgb(252, 36, 75) 100%);
+}
+
+.withdrawBtn {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  font-family: Rocketfont;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(250, 250, 250);
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  display: grid;
+  -webkit-box-pack: center;
+  place-content: center;
+  grid-auto-rows: max-content;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(263.87deg, rgb(253, 187, 78) 0%, rgb(245, 103, 25) 100%);
+  box-shadow: rgba(253, 187, 78, 0.1) 0px 10px 20px, rgba(253, 187, 78, 0.1) 0px 10px 20px, rgb(253, 187, 78) 0px -2px 4px inset, rgba(253, 187, 78, 0.6) 0px -8px 8px inset;
+  cursor: pointer;
+}
+
+.withdrawAfter::after {
+  content: "";
+  position: absolute;
+  width: 101px;
+  height: 3px;
+  bottom: -10px;
+  left: calc(50% - 50.5px);
+  border-radius: 12px 12px 0px 0px;
+  background: linear-gradient(263.87deg, rgb(253, 187, 78) 0%, rgb(245, 103, 25) 100%);
+}
+
+
+.twoin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.twoin div {
+  cursor: pointer;
+}
+
+.numback {
+  font-family: Manrope;
+  margin-left: 3.5px;
+  margin-top: 4.5px;
+  width: 76px;
+  height: 22px;
+  color: rgb(148, 138, 197);
+  background: rgb(35, 29, 71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 9px;
+}
+
+.numback:first-child {
+  margin-left: 5px;
+}
+
+.numback:last-child {
+  margin-right: 5px;
+}
