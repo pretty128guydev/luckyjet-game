@@ -42,7 +42,7 @@ const Header = () => {
             </div>
             <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.music}>
-              <img src="/public/music.svg" />
+              <img src="../music.svg" />
             </div>
           </div>
 
@@ -52,7 +52,7 @@ const Header = () => {
             </div>
             <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.money}>
-              <img src="/public/money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
+              <img src="../money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
             </div>
             <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.collection}>
