@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from "react";
 /**
  * Custom hook to increment a value smoothly.
  * @param {number} targetValue - The target value to increment towards.
- * @param {number} incrementSpeed - The speed of the increment in milliseconds.
+ * @param {number} speed - The speed of the increment (higher means faster).
  * @returns {number} - The smoothly incremented value.
  */
-const useSmoothIncrement = (targetValue, incrementSpeed = 30) => {
-  const [displayValue, setDisplayValue] = useState(1);
+const useSmoothIncrement = (targetValue, speed = 0.03) => {
+  const [displayValue, setDisplayValue] = useState(targetValue);
   const targetRef = useRef(targetValue);
-  const animationFrame = useRef(null);
+  const requestRef = useRef(null);
 
   useEffect(() => {
     targetRef.current = targetValue;
@@ -19,23 +19,23 @@ const useSmoothIncrement = (targetValue, incrementSpeed = 30) => {
     const incrementValue = () => {
       setDisplayValue((prev) => {
         const diff = targetRef.current - prev;
-        if (Math.abs(diff) < 0.01) {
+        if (Math.abs(diff) < 0.01 * Math.floor(targetValue)) {
           // Stop incrementing when close enough to target
           return targetRef.current;
         }
-        // Increment towards the target value
-        const newValue = prev + (diff / incrementSpeed);
+        // Adjust increment calculation for smoother transition
+        const newValue = prev + diff * speed;
         return newValue;
       });
-      animationFrame.current = requestAnimationFrame(incrementValue);
+      requestRef.current = requestAnimationFrame(incrementValue);
     };
 
     incrementValue();
 
     return () => {
-      cancelAnimationFrame(animationFrame.current);
+      cancelAnimationFrame(requestRef.current);
     };
-  }, [incrementSpeed]);
+  }, [speed]);
 
   return displayValue;
 };

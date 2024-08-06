@@ -88,3 +88,58 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+
+#root{
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+
+  --size-lg: 1.25rem;
+  --size-md: 1rem;
+  --size-sm: .75rem;
+  --size-xl: 1.5rem;
+  --size-xs: .5rem;
+  --size-xxl: 1.75rem;
+}
+
+* {
+  /* scrollbar-color: rgba(217, 217, 217, .3) transparent;
+  scrollbar-width: thin; */
+
+  scrollbar-width: none;
+}
+
+.bteqaw {
+  display: grid;
+  position: relative;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 14px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 10px;
+  background: none;
+  height: auto;
+}
+
+.bteqaw::before {
+  content: "";
+  z-index: 0;
+  display: block;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  left: -3px;
+  top: -3px;
+  position: absolute;
+  border-radius: 10px;
+  transition: opacity 0.32s;
+  background: none;
+}

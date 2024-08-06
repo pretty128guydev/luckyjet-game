@@ -2,7 +2,8 @@
 
 
 const initialState = {
-  scoreList: []
+  scoreList: [],
+  roundList: [],
 };
 
 const scoreReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const scoreReducer = (state = initialState, action) => {
       return {
         ...state,
         scoreList: [...state.scoreList, action.payload]
+      };
+    case "SAVE_ROUNDHISTORY":
+      return {
+        ...state,
+        roundList: [...state.roundList, action.payload]
       };
     default:
       return state;

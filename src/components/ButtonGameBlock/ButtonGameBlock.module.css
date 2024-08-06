@@ -17,22 +17,289 @@
 }
 
 .main {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 12px;
+  padding: 12px 12px 16px;
+  position: relative;
+  grid-area: make-bet;
 }
 
 .stavka {
-  width: 618.5px;
-  height: 124px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 46px 91px;
+}
+
+.slotHeader {
+  min-height: 70px;
   background: linear-gradient(90deg, rgb(31, 24, 61) 0%, rgb(38, 31, 77) 100%);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
   border-radius: 14px;
-  margin-left: 11px;
-  margin-bottom: 15px;
+  padding: 8px 10px 32px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: max-content max-content 1fr;
+  gap: 12px;
 }
 
-.one {
-  display: flex;
+.autoBet {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 10px;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
 }
+
+.autoBetCheckBox {
+  width: 26px;
+  height: 26px;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.autoBetCheckBox::after {
+  display: block;
+  content: "";
+  border-radius: 7px;
+  width: 20px;
+  height: 20px;
+  background: none center center no-repeat rgb(38, 31, 77);
+}
+
+.autoBetText {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  color: rgb(250, 250, 250);
+}
+
+.autoWithdrawal {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 10px;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.autoWithdrawalCheckBox {
+  width: 26px;
+  height: 26px;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.autoWithdrawalCheckBox::after {
+  display: block;
+  content: "";
+  border-radius: 7px;
+  width: 20px;
+  height: 20px;
+  background: none center center no-repeat rgb(38, 31, 77);
+}
+
+.autoWithdrawalText {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  color: rgb(250, 250, 250);
+}
+
+
+.coefInput {
+  justify-self: end;
+  width: 100%;
+  max-width: 120px;
+  gap: 4px;
+  background: rgb(27, 21, 54);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+.jwCcuy {
+  font-family: Manrope;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: 0px;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-left: 12px;
+  opacity: 1;
+  transition: opacity 0.16s;
+  box-shadow: transparent 0px 0px 0px 1000px inset;
+  color: rgb(250, 250, 250) !important;
+}
+
+.iBYHtE {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  gap: 4px;
+  color: transparent;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.16s;
+}
+
+.betButtonGroup {
+  background: linear-gradient(90deg, rgb(36, 29, 71) 0%, rgb(43, 35, 87) 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px -4px 24px;
+  border-radius: 14px;
+  padding: 10px 10px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 71px;
+  gap: 8px;
+}
+
+.betAmountController {
+  background: rgb(27, 21, 54);
+  border-radius: 10px;
+  pointer-events: all;
+  transition: opacity 0.32s;
+}
+
+.top {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 26px 1fr 26px;
+  border-bottom: 1px solid rgb(38, 31, 77);
+  grid-template-rows: 1fr;
+}
+
+.minus {
+  grid-template-rows: 26px;
+}
+
+.currentAmount {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+.btnMinus {
+  display: grid;
+  position: relative;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 14px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 10px;
+  background: none;
+  height: auto;
+}
+
+.hSepGF {
+  padding: 0px;
+  min-width: 26px;
+  min-height: 26px;
+  color: rgb(148, 138, 197);
+  font-family: Manrope;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-align: center;
+
+  display: grid;
+  place-items: center;
+  -webkit-box-align: center;
+  width: 100%;
+  border-radius: 8px;
+  z-index: 1;
+  transition: opacity 0.32s, box-shadow 0.32s, background 0.16s;
+  background: rgb(35, 29, 71);
+}
+
+.plus {
+  grid-template-rows: 26px;
+}
+
+.bottom {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 5px;
+  gap: 4px;
+}
+
+.chnFhm {
+  grid-template-rows: 24px;
+  display: grid;
+  grid-auto-columns: 1fr;
+}
+
+.betButton {
+  background: rgb(27, 21, 54);
+    border-radius: 14px;
+    height: 100%;
+    border: none;
+    padding: 3px;
+    position: relative;
+}
+
+
+
+
+
+
+
 
 .x {
   color: rgb(148, 138, 197);
@@ -183,22 +450,27 @@
 }
 
 .stavkabtn {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2.7px;
-  margin-left: 2.7px;
-  width: 98.2%;
-  height: 91%;
-  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  font-family: Rocketfont;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(250, 250, 250);
+  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
+  display: grid;
+  -webkit-box-pack: center;
+  place-content: center;
+  grid-auto-rows: max-content;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
   background: linear-gradient(263.87deg, rgb(148, 78, 245) 0%, rgb(92, 36, 252) 100%);
   box-shadow: rgba(25, 201, 245, 0.1) 0px 10px 20px, rgba(92, 36, 252, 0.1) 0px 10px 20px, rgb(148, 78, 245) 0px -2px 4px inset, rgba(148, 78, 245, 0.6) 0px -8px 8px inset;
   cursor: pointer;
-  text-shadow: rgb(138, 138, 138) 0px 0px 20px;
-  font-family: "Rocketfont";
-  font-size: 13.5px;
-  letter-spacing: 0.07em;
 }
 
 .cancelBtn {
@@ -245,9 +517,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .twoin div {
   cursor: pointer;
 }
+
 .numback {
   font-family: Manrope;
   margin-left: 3.5px;

@@ -1,0 +1,44 @@
+.history_item{
+    min-width: 58px;
+    height: 26px;
+    display: grid;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 9px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: -0.0023em;
+    color: rgb(250, 250, 250);
+    border-radius: 7px;
+    background: rgb(62, 91, 194);
+}
+
+.history_second{
+    background: rgb(117, 62, 194);
+}
+
+.history_third{
+    background: rgb(222, 139, 3);
+}
+
+.history_box {
+    animation: 0.32s ease-in-out 0s 1 normal forwards running dlprxA;
+    overflow: hidden;
+    transition: 0.32s;
+}
+
+@keyframes dlprxA {
+    0% {
+        opacity: 0;
+        width: 0px;
+    }
+    100% {
+        opacity: 1;
+        width: 58px;
+    }
+  }

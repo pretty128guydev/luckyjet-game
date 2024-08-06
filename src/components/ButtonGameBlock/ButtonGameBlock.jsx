@@ -27,7 +27,7 @@ const ButtonGameBlock = () => {
     if (historyData?.state === "flying" && status !== "START") {
       setStatus("WITHDRAW");
     }
-    if(historyData?.state === "ending" && status === "WITHDRAW") {
+    if (historyData?.state === "ending" && status === "WITHDRAW") {
       setStatus("START");
 
       const scoreList = {
@@ -65,101 +65,154 @@ const ButtonGameBlock = () => {
   return (
     <div className={style.main}>
       <div className={style.stavka}>
-        <div className={style.one}>
-          <div className={style.back}>
-            <div className={style.only}></div>
+        <div className={style.slotHeader}>
+          <div className={style.autoBet}>
+            <div className={style.autoBetCheckBox}></div>
+            <div className={style.autoBetText}>Auto bet</div>
           </div>
-          <p className={style.text}>Автоставка</p>
-          <div className={style.back}>
-            <div className={style.only}></div>
+          <div className={style.autoWithdrawal}>
+            <div className={style.autoWithdrawalCheckBox}></div>
+            <div className={style.autoWithdrawalText}>Auto withdrawal</div>
           </div>
-          <p className={style.text}>Автовывод</p>
-
-          <div className={style.keff}>
-            <span className={style.x}>х</span> 2.00
+          <div className={style.coefInput}>
+            <input id="coef-input" pattern="\d*(\s|\d)*(\.|,)?\d?\d?" type="text" inputmode="decimal" className={`${style.jwCcuy}`} value="1.00" />
+            <div className={`${style.iBYHtE}`}>
+              <div>x</div>
+              <div>2.00</div>
+            </div>
           </div>
         </div>
 
-        <div className={style.background}>
-          <div className={style.flex}>
-            <div className={style.number}>
-              <div className={style.onein}>
-                <div className={style.img}>
-                  <img style={{ width: "11px" }} src="https://lucky-jet.gamedev-atech.cc/assets/media/97de90559589bee034295a9d2e9e626a.svg" alt="" />
-                </div>
-                <input className={style.input} value={amount} onChange={handleAmountChange} />
-                <div className={style.img}>
-                  <img style={{ width: "11px" }} src="https://lucky-jet.gamedev-atech.cc/assets/media/02f73e3c8eee420b71b6f7c6b409b20d.svg" alt="" />
-                </div>
+        <div className={style.betButtonGroup}>
+          <div className={style.betAmountController}>
+            <div className={style.top}>
+              <div className={style.minus}>
+                <button id="bet-control-minus" className={style.btnMinus}>
+                  <div className={`${style.hSepGF}`}>
+                    <img src="https://lucky-jet.gamedev-atech.cc/assets/media/97de90559589bee034295a9d2e9e626a.svg" />
+                  </div>
+
+                </button>
               </div>
-              <div className={style.twoin}>
-                <div onClick={() => handleAmountIncrement(50)} className={style.numback}>
-                  +50
-                </div>
-                <div onClick={() => handleAmountIncrement(100)} className={style.numback}>
-                  +100
-                </div>
-                <div onClick={() => handleAmountIncrement(200)} className={style.numback}>
-                  +200
-                </div>
-                <div onClick={() => handleAmountIncrement(500)} className={style.numback}>
-                  +500
-                </div>
+              <div className={style.currentAmount}>
+                <input className={style.input} value={amount} onChange={handleAmountChange} />
+              </div>
+              <div className={style.plus}>
+                <button id="bet-control-plus" className={style.btnMinus}>
+                  <div className={`${style.hSepGF}`}>
+                    <img src="https://lucky-jet.gamedev-atech.cc/assets/media/02f73e3c8eee420b71b6f7c6b409b20d.svg" />
+                  </div>
+                </button>
               </div>
             </div>
-
-            <div className={style.button}>
-              <div onClick={handleBet} className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : style.cancelBtn}>
-                {status === "WITHDRAW" ? (
+            <div className={style.bottom}>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(50)}>
+                  <div className={style.hSepGF}>+50
+                  </div>
+                </button>
+              </div>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(100)}>
+                  <div className={style.hSepGF}>+100
+                  </div>
+                </button>
+              </div>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(200)}>
+                  <div className={style.hSepGF}>+200
+                  </div>
+                </button>
+              </div>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(500)}>
+                  <div className={style.hSepGF}>+500
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button className={style.betButton} onClick={handleBet}>
+            <div className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : style.cancelBtn}>
+              {status === "WITHDRAW" ? (
                   <p>{amount * historyData?.current_coefficients[0]} </p>
                 ) : null}
                 <p>{status}</p>
-              </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
-
       <div className={style.stavka}>
-        <div className={style.one}>
-          <div className={style.back}>
-            <div className={style.only}></div>
+        <div className={style.slotHeader}>
+          <div className={style.autoBet}>
+            <div className={style.autoBetCheckBox}></div>
+            <div className={style.autoBetText}>Auto bet</div>
           </div>
-          <p className={style.text}>Автоставка</p>
-          <div className={style.back}>
-            <div className={style.only}></div>
+          <div className={style.autoWithdrawal}>
+            <div className={style.autoWithdrawalCheckBox}></div>
+            <div className={style.autoWithdrawalText}>Auto withdrawal</div>
           </div>
-          <p className={style.text}>Автовывод</p>
-
-          <div className={style.keff}>
-            <span className={style.x}>х</span> 2.00
+          <div className={style.coefInput}>
+            <input id="coef-input" pattern="\d*(\s|\d)*(\.|,)?\d?\d?" type="text" inputmode="decimal" className={`${style.jwCcuy}`} value="1.00" />
+            <div className={`${style.iBYHtE}`}>
+              <div>x</div>
+              <div>2.00</div>
+            </div>
           </div>
         </div>
 
-        <div className={style.background}>
-          <div className={style.flex}>
-            <div className={style.number}>
-              <div className={style.onein}>
-                <div className={style.img}>
-                  <img style={{ width: "11px" }} src="https://lucky-jet.gamedev-atech.cc/assets/media/97de90559589bee034295a9d2e9e626a.svg" alt="" />
-                </div>
-                <div className={style.input}>20 ₽</div>
-                <div className={style.img}>
-                  <img style={{ width: "11px" }} src="https://lucky-jet.gamedev-atech.cc/assets/media/02f73e3c8eee420b71b6f7c6b409b20d.svg" alt="" />
-                </div>
+        <div className={style.betButtonGroup}>
+          <div className={style.betAmountController}>
+            <div className={style.top}>
+              <div className={style.minus}>
+                <button id="bet-control-minus" className={style.btnMinus}>
+                  <div className={`${style.hSepGF}`}>
+                    <img src="https://lucky-jet.gamedev-atech.cc/assets/media/97de90559589bee034295a9d2e9e626a.svg" />
+                  </div>
+
+                </button>
               </div>
-              <div className={style.twoin}>
-                <div className={style.numback}>+50</div>
-                <div className={style.numback}>+100</div>
-                <div className={style.numback}>+200</div>
-                <div className={style.numback}>+500</div>
+              <div className={style.currentAmount}>
+                <input className={style.input} value={amount} onChange={handleAmountChange} />
+              </div>
+              <div className={style.plus}>
+                <button id="bet-control-plus" className={style.btnMinus}>
+                  <div className={`${style.hSepGF}`}>
+                    <img src="https://lucky-jet.gamedev-atech.cc/assets/media/02f73e3c8eee420b71b6f7c6b409b20d.svg" />
+                  </div>
+                </button>
               </div>
             </div>
-
-            <div className={style.buttonTWO}>
-              <div className={style.stavkabtn}>CTABKA</div>
+            <div className={style.bottom}>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(50)}>
+                  <div className={style.hSepGF}>+50
+                  </div>
+                </button>
+              </div>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(100)}>
+                  <div className={style.hSepGF}>+100
+                  </div>
+                </button>
+              </div>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(200)}>
+                  <div className={style.hSepGF}>+200
+                  </div>
+                </button>
+              </div>
+              <div className={style.chnFhm}>
+                <button className={style.btnMinus} onClick={() => handleAmountIncrement(500)}>
+                  <div className={style.hSepGF}>+500
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
+          <button className={style.betButton}>
+            <div className={style.stavkabtn}> START </div>
+          </button>
         </div>
       </div>
     </div>

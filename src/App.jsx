@@ -4,8 +4,7 @@ import MainContent from './components/MainContent/MainContent.jsx'
 
 const App = () => {
     return (
-      <div>
-        <Header />
+      <div className='desktop'>
         <MainContent />
       </div>
     )

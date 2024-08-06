@@ -1,16 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
 .parent {
-  display: flex;
-  align-items: stretch;
-  height: 16px;
+  grid-area: info;
+  border-bottom: 1px solid rgb(28, 21, 55);
+  padding: 0px 12px 0px 20px;
+  display: grid;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  grid-auto-flow: column;
 }
 
 .left {
-  position: relative;
-  margin: 23px 82px;
-  width: 138px;
+  display: grid;
+  border-right: 1px solid rgb(28, 21, 55);
+  width: 332px;
   height: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-left: -20px;
+  padding-left: 90px;
 }
 
 .left::after {
@@ -24,21 +34,26 @@
 }
 
 .right {
-  display: flex;
-  margin: 15px 1px;
-  margin-left: auto;
-  margin-right: 20px;
+  display: grid;
+  place-content: center end;
+  -webkit-box-pack: end;
+  gap: 12px;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-auto-rows: max-content;
+  position: relative;
+  padding-right: 12px;
 }
 
 .one {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 7.5px;
+  grid-auto-columns: max-content;
   background: rgb(17, 13, 33);
+  width: fit-content;
   border-radius: 10px;
-  width: 69px;
-  height: 33px;
-  margin-right: 11px;
+  padding: 3px;
 }
 
 .volume {
@@ -62,32 +77,37 @@
 }
 
 .separator {
-  width: 1.5px; /* Ширина линии */
-  height: 15px; /* Высота линии */
-  background-color: rgb(35, 29, 71); /* Цвет линии */
-  margin: 0 3px; /* Отступы */
+  width: 1.5px;
+  /* Ширина линии */
+  height: 15px;
+  /* Высота линии */
+  background-color: rgb(35, 29, 71);
+  /* Цвет линии */
+  margin: 0 3px;
+  /* Отступы */
   border-radius: 1px;
 }
 
 .two {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 9.5px;
+  grid-auto-columns: max-content;
   background: rgb(17, 13, 33);
+  width: fit-content;
   border-radius: 10px;
-  width: 253px;
-  height: 33px;
-  margin-right: 11px;
+  padding: 3px;
 }
 
 .what {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgb(35, 29, 71);
-  border-radius: 8px;
-  width: 102px;
-  height: 28px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 9.5px;
+  grid-auto-columns: max-content;
+  background: rgb(17, 13, 33);
+  width: fit-content;
+  border-radius: 10px;
+  padding: 3px;
 }
 
 .money {
@@ -145,10 +165,183 @@
 }
 
 .line {
+  border-bottom: 1px solid rgb(28, 21, 55);
+  grid-area: history;
+  width: 100%;
+  position: relative;
+  height: 57px;
+  display: grid;
+}
+
+.history {
+  display: grid;
+  grid-auto-flow: column;
+  height: 100%;
+  width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-left: 15px;
+  gap: 6px;
+  overflow-x: scroll;
+  grid-auto-columns: max-content;
+  
+}
+
+.shadow {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 56px;
+  pointer-events: none;
+  width: 353px;
+  overflow: hidden;
+  background: linear-gradient(270deg, rgb(21, 16, 41) 7.81%, rgba(21, 16, 41, 0) 100%);
+}
+
+.fzknmT {
+  background: rgb(17, 13, 33);
+  border-radius: 10px;
+  height: 36px;
+  width: 36px;
+  padding: 3px;
+  display: flex;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+}
+
+.dDvXLf {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.bteqaw {
+  display: grid;
+  position: relative;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 14px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 10px;
+  background: none;
+  height: auto;
+}
+
+.bteqaw::before {
+  content: "";
+  z-index: 0;
   display: block;
-  width: 100%; /* Ширина на всю доступную ширину */
-  height: 1px;
-  background: rgb(28, 21, 55);
-  margin-top: 46px;
-  padding: 0; /* Убираем внутренние отступы */
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  left: -3px;
+  top: -3px;
+  position: absolute;
+  border-radius: 10px;
+  transition: opacity 0.32s;
+  background: none;
+}
+
+.hSepGF {
+  width: 30px !important;
+  height: 30px;
+  padding: 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
+  display: grid;
+  place-items: center;
+  -webkit-box-align: center;
+  width: 100%;
+  min-height: 30px;
+  border-radius: 8px;
+  z-index: 1;
+  transition: opacity 0.32s, box-shadow 0.32s, background 0.16s;
+  background: rgb(35, 29, 71);
+}
+
+.popUpMore {
+  margin: 0px 10px;
+  width: calc(100% - 20px);
+  position: absolute;
+  background: rgb(35, 29, 71);
+  top: 0px;
+  border-radius: 16px;
+  z-index: 101;
+}
+
+.popUpHeader {
+  padding: 18px 19px 18px 12px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 56px;
+  background: linear-gradient(0deg, rgba(21, 16, 41, 0.25), rgba(21, 16, 41, 0.25));
+  border-bottom: rgb(47, 36, 92);
+}
+
+.popUpTitle {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.popUpClose {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.bteqaw::before {
+  content: "";
+  z-index: 0;
+  display: block;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  left: -3px;
+  top: -3px;
+  position: absolute;
+  border-radius: 10px;
+  transition: opacity 0.32s;
+  background: rgb(17, 13, 33);
+}
+
+.sc-kOPcWz {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  background: rgba(222, 139, 3, 0.15);
+}
+
+.hSepGF {
+  display: grid;
+  place-items: center;
+  -webkit-box-align: center;
+  width: 100%;
+  min-height: 30px;
+  border-radius: 8px;
+  z-index: 1;
+  transition: opacity 0.32s, box-shadow 0.32s, background 0.16s;
+  background: rgb(35, 29, 71);
+}
+
+.hdPKzm {
+  width: 18px;
+  height: 18px;
+  background: url(https://lucky-jet.gamedev-atech.cc/assets/media/f0bddf6….svg) center center / cover no-repeat;
+}
+
+.popUpList {
+  display: grid;
+  padding: 10px 12px;
+  grid-template-columns: repeat(auto-fill, 56px);
+  gap: 8px 6px;
+  border-top: 1px solid rgb(40, 40, 40);
 }

@@ -19,6 +19,7 @@ export const fetchHistoryData = () => async (dispatch) => {
   try {
     const response = await fetch("https://lucky-jet-history.gamedev-atech.cc/public/history/api/history/replay");
     const data = await response.json();
+
     dispatch(fetchHistoryDataSuccess(data));
   } catch (error) {
     dispatch(fetchHistoryDataFailure(error.message));

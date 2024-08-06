@@ -118,7 +118,7 @@
   /* fromm current positon they should move ahead */
 
   100% {
-    transform: translateX(100vw) translateY(-257px);
+    transform: translateX(300vw) translateY(-257px);
   }
 }
 

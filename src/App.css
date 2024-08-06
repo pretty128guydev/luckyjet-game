@@ -2,3 +2,24 @@ body {
   background-color: rgb(21, 16, 40);
 }
 
+
+.desktop {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: 100%;
+}
+
+
+.main-content{
+  height: 100%;
+  display: grid;
+  grid-template:
+      "info info" 69px
+      "bets history" 56px
+      "bets canvas" 1fr
+      "bets make-bet" max-content / 332px 1fr;
+  border-right: 1px solid rgb(28, 21, 55);
+}

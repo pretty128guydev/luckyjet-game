@@ -13,7 +13,7 @@ const MainGameBlock = () => {
   const historyData = useSelector((state) => state.history.historyData);
 
   const handleFlyAway = () => {
-    setFlyAway(true);
+      setFlyAway(true);
   };
 
   // Function to restart animations
@@ -24,18 +24,28 @@ const MainGameBlock = () => {
   };
 
   const targetCoefficient = resetCoefficient ? 1 : historyData?.current_coefficients[0] || 0;
+  // console.log(targetCoefficient);
   const displayCoefficient = useSmoothIncrement(targetCoefficient);
 
   useEffect(() => {
     if (historyData?.state === "betting") {
       restartAnimations();
     } else if (historyData?.state === "ending") {
-      handleFlyAway();
-      setResetCoefficient(false); // Stop resetting coefficient when the round ends
+      // setTimeout(() => {
+      //   handleFlyAway();
+      //   setResetCoefficient(false); // Stop resetting coefficient when the round ends
+      // }, 2000)
     } else {
       setResetCoefficient(false);
     }
   }, [historyData?.state]);
+
+  useEffect(() => {
+    if (historyData?.state === "ending" && displayCoefficient === historyData?.current_coefficients[0]) {
+      handleFlyAway();
+      setResetCoefficient(false); // Stop resetting coefficient when the round ends
+    }
+  }, [displayCoefficient, historyData?.current_coefficients]);
 
   if (historyData?.state === "waiting" || historyData?.state === "betting") {
     return (
@@ -50,9 +60,10 @@ const MainGameBlock = () => {
   return (
     <div style={{ height: "100%" }} className={`game-container ${historyData?.state === "waiting" ? "loading" : ""} ${flyAway ? "animation-stopped" : ""}`}>
       <div className="star"></div>
+      <div className="cloud"></div>
       <div className="game-center-text">
-        <div className={`current-coffecient ${flyAway ? "animation-coffecient" : ''}`}>x {displayCoefficient.toFixed(2)}</div>
-        {historyData?.state === "ending" && <h3 className="game-text flew-away">Flew Away</h3>}
+        <div className={`current-coffecient ${flyAway ? "animation-coffecient" : ''}`}><span style={{fontSize: "40px"}}>x</span> {displayCoefficient.toFixed(2)}</div>
+        {historyData?.state === "ending" && flyAway && <h3 className="game-text flew-away">Flew Away</h3>}
       </div>
       <GameAnimation 
         flyAway={flyAway} 

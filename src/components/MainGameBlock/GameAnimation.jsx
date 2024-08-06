@@ -4,12 +4,12 @@ import "./GameAnimation.css";
 const GameAnimation = ({ flyAway, animationKey }) => {
     const [pathD, setPathD] = useState("M 0 347 Q 0 347 0 347");
     const [shadowPathD, setShadowPathD] = useState("M 0 347 Q 0 347 0 347");
-    const [rocketPosition, setRocketPosition] = useState({ x: -20, y: 547 });
-    const [direction, setDirection] = useState(1);
-    const [distance, setDistance] = useState({ x: 0, y: 0 });
+    const [rocketPosition, setRocketPosition] = useState({ x: -100, y: 507 });
+    const [dimensions, setDimensions] = useState({width: 0, height: 0, x: 0, y: 0});
     const rocketRef = useRef(null);
     const pathRef = useRef(null);
-
+    const svgRocket = useRef(null);
+    let rect;
 
     useEffect(() => {
         const totalFrames = 100;
@@ -17,73 +17,61 @@ const GameAnimation = ({ flyAway, animationKey }) => {
         let animationFrameId;
         let progress;
         let flag = 0;
-
-        setInterval(function () {
-            if (Math.random() > 0.5) {
-                flag = 0;
-            } else {
-                flag = 1;
-            }
-        }, 1000)
+        const svgContainer = svgRocket.current;
 
         const animatePath = () => {
-            // Math.random() * 0.2 + 0.8;
+
+            if(svgContainer) {
+                rect = svgContainer.getBoundingClientRect();
+            }
+
             if (frame <= totalFrames) {
                 progress = frame / totalFrames
+
             } else {
                 if (flag) {
-                    if (progress <= 0.9893) {
+                    if (progress < 0.97) {
                         progress += 0.0007
-                    } else {
+                    } else if(progress >= 0.97 && progress <= 0.9893) {
+                        progress += 0.0001
+                    }
+                    else {
                         flag = 0;
                         progress -= 0.0007
                     }
                 } else {
-                    if (progress >= 0.9107) {
+                    if (progress >= 0.94) {
                         progress -= 0.0007
-                    } else {
+                    } else if(progress < 0.94 && progress >= 0.92) {
+                        progress -= 0.0001
+                    }else {
                         flag = 1;
                         progress += 0.0007
                     }
                 }
             }
-            console.log("flag ---> " + flag)
-            // else { 
-            //     let speed = totalFrames / pow(e, frame); 
+            const controlPointX = rect.width * 0.5 * progress;
+            const controlPointY = frame <= totalFrames ? rect.height : progress * rect.height;
 
-            //     let t;
-            //     if(counterChange % 2 == 0) {
-            //         t = Math.floor(Math.random() * 10)       
-            //     }
-            //     step ++;
-            //     if(step == t) {
-            //         counterChange += 1;
-            //         step = 0;
-            //     } else {
-            //         if(counterChange % 2 == 1) {
-            //             progress += speed;
-            //         } else {
-            //             progress -= speed;
-            //         }
-            //     }
+            const floatingOffsetX = Math.sin(progress * Math.PI * 2) * 10;
+            const floatingOffsetY = Math.cos(progress * Math.PI * 2) * 20;
+            const endPointX = rect.width * 0.8 * progress + floatingOffsetX;
+            const endPointY = 200*(progress) + (rect.height) * (1 - progress) + floatingOffsetY;
 
-            // }
-            const controlPointX = 470.2918182957628 * progress;
-            const controlPointY = frame <= totalFrames ? 347 : progress * 347;
 
-            const floatingOffset = Math.sin(progress * Math.PI * 2) * 20;
-            const endPointX = 637.9377274436442 * progress + distance.x;
-            const endPointY = 121.68593835254131 + (347 - 121.68593835254131) * (1 - progress) + floatingOffset + distance.y;
+            const pathFloatingOffsetY = frame > 97 ? Math.sin(frame*0.02) * 10 : 0;
+            const adjustedEndPointY = endPointY + pathFloatingOffsetY;
+            const adjustedControlPointY = controlPointY + pathFloatingOffsetY;
 
-            setPathD(`M 0 347 Q ${controlPointX} ${controlPointY} ${endPointX} ${endPointY}`);
-            setRocketPosition({ x: endPointX * 1.5 - 30, y: endPointY + 130 })
+            setPathD(`M 10 ${rect.height - 10} Q ${controlPointX} ${adjustedControlPointY} ${endPointX} ${adjustedEndPointY}`);
+            setRocketPosition({ x: endPointX - 80, y: adjustedEndPointY - 80 })
             // console.log("progress ---> " + progress)
             // console.log("frame ---> " + frame)
 
             const shadowOffset = 5;
             const shadowControlPointX = controlPointX + shadowOffset;
             const shadowEndPointX = endPointX + shadowOffset;
-            const shadowPath = `M 5 347 Q ${shadowControlPointX} ${controlPointY} ${shadowEndPointX} ${endPointY - 8} L ${shadowEndPointX} 347 Z`;
+            const shadowPath = `M 0 ${rect.height - 10} Q ${shadowControlPointX} ${adjustedControlPointY} ${shadowEndPointX} ${adjustedEndPointY - 6} L ${shadowEndPointX} ${rect.height - 10} Z`;
             setShadowPathD(shadowPath);
 
             frame++;
@@ -104,7 +92,7 @@ const GameAnimation = ({ flyAway, animationKey }) => {
         return () => {
             cancelAnimationFrame(animationFrameId);
         };
-    }, [flyAway]);
+    }, [flyAway, rect]);
 
     return (
         <div className="svg_container">
@@ -116,6 +104,7 @@ const GameAnimation = ({ flyAway, animationKey }) => {
                     width: "calc(100% - 10px)",
                     height: "calc(100% - 10px)"
                 }}
+                ref={svgRocket}
             >
                 <div
                     className={`rocket-images  ${flyAway ? "fly-away" : ""}`}
@@ -133,7 +122,7 @@ const GameAnimation = ({ flyAway, animationKey }) => {
                         <img src="https://lucky-jet.gamedev-atech.cc/assets/media/7a702f0aec3a535e1ba54a71c31bdfd1.webp" className="sc-imWYAI robot" alt="Image 3" />
                     </div>
                 </div>
-                <svg className="svg_shadow" viewBox="0 0 637.9377274436442 350">
+                <svg className="svg_shadow">
                     <defs>
                         <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
                             <stop stopColor="#9d7aff" stopOpacity=".33"></stop>

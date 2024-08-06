@@ -1,3 +1,10 @@
 .container {
-  display: flex;
+  height: 100%;
+  display: grid;
+  grid-template:
+      "info info" 69px
+      "bets history" 57px
+      "bets canvas" 1fr
+      "bets make-bet" max-content / 330px 1fr;
+  border-right: none;
 }
