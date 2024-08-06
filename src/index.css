@@ -143,3 +143,10 @@ textarea:not([rows]) {
   transition: opacity 0.32s;
   background: none;
 }
+
+* > *, ::after, ::before {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: inherit;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}

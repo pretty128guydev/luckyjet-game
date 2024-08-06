@@ -11,7 +11,8 @@
 }
 
 .animation-stopped {
-  animation-play-state: paused; /* Pause the animation */
+  animation-play-state: paused;
+  /* Pause the animation */
 }
 
 
@@ -52,18 +53,23 @@
   content: "";
   position: absolute;
 }
+
 .game-container::before {
   background-image: url("/public/sidebar.svg");
   background-position: left;
   background-repeat: no-repeat repeat;
   top: 0;
   left: 0;
-  width: 20px; /* Adjust width as per your sidebar image */
-  height: 100%; /* Make the sidebar take full height of the game container */
-  z-index: 1; /* Ensure sidebar appears behind game content */
+  width: 20px;
+  /* Adjust width as per your sidebar image */
+  height: 100%;
+  /* Make the sidebar take full height of the game container */
+  z-index: 1;
+  /* Ensure sidebar appears behind game content */
   animation: topTobottom 20s linear 0s infinite normal none;
   border-right: 1px solid rgb(38, 28, 74);
 }
+
 .game-container::after {
   background-image: url("/public/bottombar.svg");
   background-position: center bottom;
@@ -80,6 +86,7 @@
   0% {
     background-position-x: 100%;
   }
+
   100% {
     background-position-x: 0%;
   }
@@ -89,6 +96,7 @@
   0% {
     background-position-y: 0%;
   }
+
   100% {
     background-position-y: 100%;
   }
@@ -97,13 +105,14 @@
 @keyframes starMove {
   100% {
     background-position-x: -1e+06px;
-}
+  }
 }
 
 .animation-stopped::before,
 .animation-stopped::after {
   animation-play-state: paused;
 }
+
 /* .game-container.loading {
   background-image: none;
 }
@@ -115,11 +124,32 @@
 }
 
 .loading-container {
+  display: grid;
+  -webkit-box-pack: center;
+  place-content: center;
+  -webkit-box-align: center;
+  place-items: center;
+  grid-auto-rows: max-content;
+  grid-template-columns: 450px;
+  padding: 0px 20px;
+  gap: 24px;
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* position: absolute; */
+  transition: opacity 0.32s;
+  z-index: 100;
+}
+
+.waiting-text {
+  font-family: Rocketfont;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 39px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
 }
 
 .loading-container img {
@@ -130,15 +160,29 @@
   left: 50%;
   transform: translate(-50%, -50%); */
 }
-.game-text {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 34px;
-  margin: 20px 0;
-  color: white;
-  max-width: 450px;
-  font-weight: bold;
+
+.jMhEmG {
+  position: relative;
+  left: 1px;
+  top: 1px;
+  background: rgb(148, 78, 245);
+  border-radius: 10px;
+  height: 4px;
 }
+
+.game-text {
+  font-family: Rocketfont;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: rgb(250, 250, 250);
+  text-shadow: rgba(138, 138, 138, 0.5) 0px 0px 21.9869px;
+  opacity: 1;
+}
+
 .svg-container {
   position: relative;
   width: 100%;
@@ -150,9 +194,11 @@
   0% {
     transform: translateY(-2px);
   }
+
   50% {
     transform: translateY(2px);
   }
+
   100% {
     transform: translateY(-2px);
   }
@@ -169,11 +215,13 @@
 }
 
 .fly-away {
-  animation: fly-away 10s forwards; /* Apply the fly-away animation */
+  animation: fly-away 10s forwards;
+  /* Apply the fly-away animation */
 }
 
 .paused {
-  animation-play-state: paused; /* Pause the path and shadow animations */
+  animation-play-state: paused;
+  /* Pause the path and shadow animations */
 }
 
 /* COFFECIENT  */
@@ -202,39 +250,49 @@
 }
 
 @keyframes eeiVJC {
- 10% {
-  opacity: 0.5;
- }
- 15% {
-  opacity: 1;
- }
- 20% {
-  opacity: 0.5;
- }
- 25% {
-  opacity: 1;
+  10% {
+    opacity: 0.5;
+  }
 
- }
- 30% {
-  opacity: 0.5;
- }
- 35% {
-  opacity: 1;
- }
- 40% {
-  opacity: 0.5;
- }
- 45% {
-  opacity: 1;
- }
- 50% {
-  transform: scale(1.15);
-  opacity: 0.5;
- }
- 55% {
-  opacity: 1;
- }
- 100% {
-  transform: scale(1);
- }
+  15% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 0.5;
+  }
+
+  25% {
+    opacity: 1;
+
+  }
+
+  30% {
+    opacity: 0.5;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0.5;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.5;
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

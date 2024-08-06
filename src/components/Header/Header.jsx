@@ -92,8 +92,8 @@ const Header = () => {
               </div>
               <div className={style.popUpClose} onClick={handlCloseMoreButtonClick}>
                 <button id="close-modal" className="bteqaw">
-                  <div className="sc-kOPcWz hSepGF">
-                    <div className="hdPKzm">
+                  <div className={style.dIPjTS}>
+                    <div className={style.hdPKzm}>
                     </div>
                   </div>
                 </button>

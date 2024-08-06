@@ -9,8 +9,10 @@ const HistoryBlock = () => {
   const cash_outs = history_data?.cash_outs || [];
 
   const [activeTab, setActiveTab] = useState('tab-0');
-  const [activeMenu, setActiveMenu] = useState('topWins');
+  const [activeScoreMenu, setActiveScoreMenu] = useState('topWins');
+  const [activeDateMenu, setActiveDateMenu] = useState('year');
   const [topMenuClick, setTopMenuClick] = useState(false);
+  const [dateMenuClick, setDateMenuClick] = useState(false);
 
   // console.log("CASHOUT IS ", cash_outs);
 
@@ -18,12 +20,22 @@ const HistoryBlock = () => {
     setActiveTab(e.target.id);
   }
 
-  const handleTopMenuClick = () => {
+  const handleTopScoreMenuClick = () => {
     setTopMenuClick(!topMenuClick);
+    setDateMenuClick(false);
+  }
+
+  const handleDateMenuClick = () => {
+    setDateMenuClick(!dateMenuClick);
+    setTopMenuClick(false);
   }
 
   const handleTopMenuCheck = (e) => {
-    setActiveMenu(e.target.id);
+    setActiveScoreMenu(e.target.id);
+  }
+
+  const handleTopDateCheck = (e) => {
+    setActiveDateMenu(e.target.id)
   }
 
 
@@ -60,7 +72,7 @@ const HistoryBlock = () => {
             <div id="menu-box-betList" className={style.menuTopBetList}>
               <div>
                 <div className={style.dDvXLf}>
-                  <button id="menu-box-dropdown-type" className={style.bteqaw} onClick={handleTopMenuClick}>
+                  <button id="menu-box-dropdown-type" className={style.bteqaw} onClick={handleTopScoreMenuClick}>
                     <div className={style.bCBpzi}>
                       <span className={style.topWinsText}>Top Wins</span>
                       <img src="https://lucky-jet.gamedev-atech.cc/assets/media/f1753c1954e578e77a775be88cf3453d.svg"></img>
@@ -73,9 +85,25 @@ const HistoryBlock = () => {
                     <div className={style.drpItem} id="topWinning" onClick={handleTopMenuCheck}>Top winning</div>
                     <div className={style.drpItem} id="topCoef" onClick={handleTopMenuCheck}>Top coef</div>
                   </div>
-                  )
-                }
-                
+                )}
+              </div>
+              <div>
+                <div className={style.dDvXLf}>
+                  <button id="menu-box-dropdown-type" className={style.bteqaw} onClick={handleDateMenuClick}>
+                    <div className={style.bCBpzi}>
+                      <span className={style.topWinsText}>Year</span>
+                      <img src="https://lucky-jet.gamedev-atech.cc/assets/media/f1753c1954e578e77a775be88cf3453d.svg"></img>
+                    </div>
+                  </button>
+                </div>
+
+                {dateMenuClick && (
+                  <div className={style.drpItemList}>
+                    <div className={style.drpItem} id="year" onClick={handleTopDateCheck}>Year</div>
+                    <div className={style.drpItem} id="month" onClick={handleTopDateCheck}>Month</div>
+                    <div className={style.drpItem} id="day" onClick={handleTopDateCheck}>Day</div>
+                  </div>
+                )}
               </div>
             </div>
           )

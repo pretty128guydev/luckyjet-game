@@ -184,7 +184,7 @@
   gap: 6px;
   overflow-x: scroll;
   grid-auto-columns: max-content;
-  
+
 }
 
 .shadow {
@@ -335,7 +335,7 @@
 .hdPKzm {
   width: 18px;
   height: 18px;
-  background: url(https://lucky-jet.gamedev-atech.cc/assets/media/f0bddf6….svg) center center / cover no-repeat;
+  background: url("public/close.svg") center center / cover no-repeat;
 }
 
 .popUpList {
@@ -345,3 +345,37 @@
   gap: 8px 6px;
   border-top: 1px solid rgb(40, 40, 40);
 }
+
+.popUpTitle img {
+  margin-right: 10px;
+}
+
+.popUpTitle h2 {
+  margin: 0px;
+  text-transform: uppercase;
+  color: white;
+  font-family: Rocketfont;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-align: left;
+}
+
+.dIPjTS {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  background: rgba(222, 139, 3, 0.15);
+
+  display: grid;
+  place-items: center;
+  -webkit-box-align: center;
+
+  min-height: 30px;
+  border-radius: 8px;
+  z-index: 1;
+  transition: opacity 0.32s, box-shadow 0.32s, background 0.16s;
+}
+
