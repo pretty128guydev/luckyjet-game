@@ -58,10 +58,10 @@ const HistoryBlock = () => {
               <div className={style.cashOut}>{scoreList?.earnAmount > 0 ? scoreList?.earnAmount + '$' : '-'}</div>
               <div className={style.sb}>
                 <div className={style.send}>
-                  <img src="/public/send.svg" alt="" />
+                  <img src="../send.svg" alt="" />
                 </div>
                 <div className={style.verify}>
-                  <img src="/public/verify.svg" alt="" />
+                  <img src="../verify.svg" alt="" />
                 </div>
               </div>
             </div>

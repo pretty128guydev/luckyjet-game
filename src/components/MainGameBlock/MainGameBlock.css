@@ -24,7 +24,7 @@
   animation-timeline: auto;
   animation-range-start: normal;
   animation-range-end: normal;
-  background: url("/public/star.png") 0% 0% / contain repeat-x;
+  background: url("../star.png") 0% 0% / contain repeat-x;
   animation: 370370s linear 0s infinite normal none running starMove;
 }
 
@@ -37,7 +37,7 @@
   animation-range-start: normal;
   animation-range-end: normal;
   opacity: 1;
-  background: url("/public/cloud.svg") 0% 0% / contain repeat-x;
+  background: url("../cloud.svg") 0% 0% / contain repeat-x;
   animation: 30000s linear 0s infinite normal none running moveClouds;
   transition: background-position-y 0.64s, opacity 0.64s;
 }
@@ -55,7 +55,7 @@
 }
 
 .game-container::before {
-  background-image: url("/public/sidebar.svg");
+  background-image: url("../sidebar.svg");
   background-position: left;
   background-repeat: no-repeat repeat;
   top: 0;
@@ -71,7 +71,7 @@
 }
 
 .game-container::after {
-  background-image: url("/public/bottombar.svg");
+  background-image: url("../bottombar.svg");
   background-position: center bottom;
   bottom: 0;
   left: 20px;

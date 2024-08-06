@@ -335,7 +335,7 @@
 .hdPKzm {
   width: 18px;
   height: 18px;
-  background: url("public/close.svg") center center / cover no-repeat;
+  background: url("../close.svg") center center / cover no-repeat;
 }
 
 .popUpList {

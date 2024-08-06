@@ -32,37 +32,37 @@ const Header = () => {
     <>
       <div className={style.parent}>
         <div className={style.left}>
-          <img src="/public/lucky.svg" />
+          <img src="../lucky.svg" />
         </div>
 
         <div className={style.right}>
           <div className={style.one}>
             <div className={style.volume}>
-              <img src="/public/volume.svg" />
+              <img src="../volume.svg" />
             </div>
             <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.music}>
-              <img src="/public/music.svg" />
+              <img src="../music.svg" />
             </div>
           </div>
 
           <div className={style.two}>
             <div className={style.what}>
-              <img style={{ marginLeft: "-1px" }} src="/public/what.svg" /> <p className={style.textW}>Как играть?</p>
+              <img style={{ marginLeft: "-1px" }} src="../what.svg" /> <p className={style.textW}>Как играть?</p>
             </div>
             <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.money}>
-              <img src="/public/money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
+              <img src="../money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
             </div>
             <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.collection}>
-              <img src="/public/collection.svg" />
+              <img src="../collection.svg" />
             </div>
           </div>
 
           <div className={style.three}>
             <div className={style.chat}>
-              <img src="/public/chat.svg" />
+              <img src="../chat.svg" />
             </div>
           </div>
         </div>
