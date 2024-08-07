@@ -23,7 +23,7 @@ const MainGameBlock = () => {
   const withdrawInfo = useSelector((state) => state.score.withdrawInfo);
   const current_amount = useSelector((state) => state.money.currentMoney);
 
-  const [amount, setAmount] = useState(500);
+  const [amount, setAmount] = useState(20);
   const [status, setStatus] = useState("START");
 
   const now = new Date();
@@ -61,30 +61,40 @@ const MainGameBlock = () => {
   // console.log(targetCoefficient);
   const displayCoefficient = useSmoothIncrement(targetCoefficient);
 
-  useEffect(() => {
+  const loadingStyle = {};
 
-    if((historyData?.state === "betting" || historyData?.state === "waiting")
-     && status === "CANCEL") {
+  useEffect(() => {
+    if ((historyData?.state === "betting" || historyData?.state === "waiting")
+      && status === "CANCEL") {
       setStatus("WAITING");
-    } 
+
+      const loadingStyle = {
+        width: status === "WAITING" ? "100%" : "0%", // Adjust the width as needed
+        transition: "width 1s ease-in-out" // Smooth transition for width change
+      }
+    
+    }
 
     if (historyData?.state === "flying" && status !== "START") {
       setStatus("WITHDRAW");
+      dispatch(decreaseMoney(amount));
     }
+
+    console.log("status = ", status, "flyAway = ", flyAway)
     // console.log("status = ", status, "history = ", historyData?.state, "current_coefficient = ", current_coefficient, "history.current = ", historyData?.current_coefficients[0])
     if (status === "WITHDRAW" && flyAway) {
       setStatus("START");
 
       const scoreList = {
         time: time24,
-        coefficient: displayCoefficient,
+        coefficient: displayCoefficient.toFixed(2),
         consumAmount: amount,
         earnAmount: '-'
       }
 
       dispatch(saveScore(scoreList))
     }
-  }, [historyData?.state]);
+  }, [historyData?.state, flyAway]);
 
   useEffect(() => {
     if (historyData?.state === "betting") {
@@ -118,7 +128,6 @@ const MainGameBlock = () => {
     console.log(historyData?.state)
     if (historyData?.state === "betting") {
       if (current_amount - amount >= 0) {
-        dispatch(decreaseMoney(amount));
       } else {
         alert("Недостаточно средств");
       }
@@ -137,10 +146,12 @@ const MainGameBlock = () => {
         setShowToast(true);
         setWithdrawValue(displayCoefficient);
 
+        console.log(amount)
+
         const scoreList = {
           time: time24,
-          coefficient: displayCoefficient.toFixed(2),
-          consumAmount: amount.toFixed(2),
+          coefficient: displayCoefficient?.toFixed(2),
+          consumAmount: amount,
           earnAmount: (displayCoefficient * amount).toFixed(2)
         }
 
@@ -160,10 +171,7 @@ const MainGameBlock = () => {
   };
 
 
-  const loadingStyle = {
-    width: historyData?.state === "waiting" || historyData?.state === "betting" ? "0%" : "100%", // Adjust the width as needed
-    transition: "width 7s ease-in-out" // Smooth transition for width change
-  }
+  console.log(historyData?.state);
 
   return (
     <>
@@ -173,7 +181,8 @@ const MainGameBlock = () => {
             <img src="/loading.svg" alt="" />
             <h3 className="waiting-text">Waiting for the next <br></br>round</h3>
             <div style={{ width: "245px" }}>
-              <div className="jMhEmG" style={loadingStyle}>
+              <div className="jMhEmG">
+                {/* <div className="loading-bar" style={loadingStyle}></div> */}
               </div>
             </div>
           </div>
@@ -274,7 +283,7 @@ const MainGameBlock = () => {
                 </div>
               </div>
             </div>
-            <button className={`${style.betAfter} ${status === "START" ? style.betAfter : status === "WITHDRAW" ? style.withdrawAfter : status === "WAITING" ? style.waitingAfter : style.cancelAfter}`} disabled = { status === "WAITING" ? 'disabled' : ''} onClick={handleBet}>
+            <button className={`${style.betAfter} ${status === "START" ? style.betAfter : status === "WITHDRAW" ? style.withdrawAfter : status === "WAITING" ? style.waitingAfter : style.cancelAfter}`} disabled={status === "WAITING" ? 'disabled' : ''} onClick={handleBet}>
               <div className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : status === "WAITING" ? style.waitingBtn : style.cancelBtn}>
                 {status === "WITHDRAW" ? (
                   <div>{(totalAmount).toFixed(2)} </div>
@@ -315,7 +324,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={amount} onChange={handleAmountChange} />
+                  <input className={style.input} value={200}/>
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>
@@ -327,25 +336,25 @@ const MainGameBlock = () => {
               </div>
               <div className={style.bottom}>
                 <div className={style.chnFhm}>
-                  <button className={style.btnMinus} onClick={() => handleAmountIncrement(50)}>
+                  <button className={style.btnMinus}>
                     <div className={style.hSepGF}>+50
                     </div>
                   </button>
                 </div>
                 <div className={style.chnFhm}>
-                  <button className={style.btnMinus} onClick={() => handleAmountIncrement(100)}>
+                  <button className={style.btnMinus}>
                     <div className={style.hSepGF}>+100
                     </div>
                   </button>
                 </div>
                 <div className={style.chnFhm}>
-                  <button className={style.btnMinus} onClick={() => handleAmountIncrement(200)}>
+                  <button className={style.btnMinus}>
                     <div className={style.hSepGF}>+200
                     </div>
                   </button>
                 </div>
                 <div className={style.chnFhm}>
-                  <button className={style.btnMinus} onClick={() => handleAmountIncrement(500)}>
+                  <button className={style.btnMinus}>
                     <div className={style.hSepGF}>+500
                     </div>
                   </button>

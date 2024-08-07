@@ -49,24 +49,59 @@ const HistoryBlock = () => {
         </div>
       </div>
       <div className={style.betList}>
-        {activeTab === 'tab-1' && my_score_list.length > 0 && my_score_list.map((scoreList) => {
-          return (
-            <div className={style.betDone}>
-              <div className={style.time}>{scoreList?.time}</div>
-              <div className={style.price}>{scoreList?.consumAmount} ₽</div>
-              <div className={`${2 > Math.floor(scoreList?.coefficient) >= 1 ? style.low : 10 > Math.floor(scoreList?.coefficient) >= 2 ? style.medium : style.high}`}>{scoreList?.coefficient}x</div>
-              <div className={style.cashOut}>{scoreList?.earnAmount > 0 ? scoreList?.earnAmount + '$' : '-'}</div>
-              <div className={style.sb}>
-                <div className={style.send}>
-                  <img src="../send.svg" alt="" />
+        {activeTab === 'tab-1' && my_score_list.length > 0 && 
+          (
+            <>
+              <div className={style.betDone}>
+                <div className={style.time}>{my_score_list[my_score_list.length - 1]?.time}</div>
+                <div className={style.price} style={{ fontSize: my_score_list[my_score_list.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{my_score_list[my_score_list.length - 1]?.consumAmount} ₽</div>
+                <div className={
+                  Math.floor(my_score_list[my_score_list.length - 1]?.coefficient) < 2
+                    ? style.low
+                    : Math.floor(my_score_list[my_score_list.length - 1]?.coefficient) < 10
+                      ? style.medium
+                      : style.high
+                } style={{ fontSize: my_score_list[my_score_list.length - 1]?.coefficient > 100 ? '11px' : '12px' }}>
+                  {my_score_list[my_score_list.length - 1]?.coefficient}x
                 </div>
-                <div className={style.verify}>
-                  <img src="../verify.svg" alt="" />
+                <div className={style.cashOut} style={{ fontSize: my_score_list[my_score_list.length - 1]?.earnAmount > 1000 ? '11px' : '12px' }}>{my_score_list[my_score_list.length - 1]?.earnAmount > 0 ? my_score_list[my_score_list.length - 1]?.earnAmount + '$' : '-'}</div>
+                <div className={style.sb}>
+                  <div className={style.send}>
+                    <img src="../send.svg" alt="" />
+                  </div>
+                  <div className={style.verify}>
+                    <img src="../verify.svg" alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+              {my_score_list.slice(0, -1).reverse().map((scoreList) => (
+                <div className={style.betDone}>
+                <div className={style.time}>{scoreList?.time}</div>
+                <div className={style.price} style={{ fontSize: scoreList?.consumAmount > 1000 ? '11px' : '12px' }}>{scoreList?.consumAmount} ₽</div>
+                <div className={
+                  Math.floor(scoreList?.coefficient) < 2
+                    ? style.low
+                    : Math.floor(scoreList?.coefficient) < 10
+                      ? style.medium
+                      : style.high
+                } style={{ fontSize: scoreList?.coefficient > 100 ? '11px' : '12px' }}>
+                  {scoreList?.coefficient}x
+                </div>
+                <div className={style.cashOut} style={{ fontSize: scoreList?.earnAmount > 1000 ? '11px' : '12px' }}>{scoreList?.earnAmount > 0 ? scoreList?.earnAmount + '$' : '-'}</div>
+                <div className={style.sb}>
+                  <div className={style.send}>
+                    <img src="../send.svg" alt="" />
+                  </div>
+                  <div className={style.verify}>
+                    <img src="../verify.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+
+              ))}
+            </>
+          )
+        }
         {activeTab === 'tab-2' &&
           (
             <div id="menu-box-betList" className={style.menuTopBetList}>

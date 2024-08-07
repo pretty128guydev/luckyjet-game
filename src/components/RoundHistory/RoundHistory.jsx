@@ -13,7 +13,7 @@ const RoundHistory = () => {
           {/* Display the newly added value */}
           <div className="history_box">
             <div className={`history_item ${Math.floor(round_list[round_list.length - 1]) > 1 && Math.floor(round_list[round_list.length - 1]) < 10 ? "history_second" : Math.floor(round_list[round_list.length - 1]) > 9 ? "history_third" : ''}`}>
-              {round_list[round_list.length - 1]} x
+              {round_list[round_list.length - 1].toFixed(2)} x
             </div>
           </div>
 
@@ -29,7 +29,7 @@ const RoundHistory = () => {
                     : ''
                 }`}
               >
-                {roundList} x
+                {roundList.toFixed(2)} x
               </div>
             </div>
           ))}

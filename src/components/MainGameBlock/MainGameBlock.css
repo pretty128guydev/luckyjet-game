@@ -165,6 +165,16 @@
   background: rgb(148, 78, 245);
   border-radius: 10px;
   height: 4px;
+  animation: loading-animation 8s infinite;
+}
+
+@keyframes loading-animation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
 
 .game-text {
