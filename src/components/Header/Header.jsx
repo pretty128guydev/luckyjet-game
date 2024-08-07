@@ -38,31 +38,52 @@ const Header = () => {
         <div className={style.right}>
           <div className={style.one}>
             <div className={style.volume}>
-              <img src="../volume.svg" />
+              <button id="volume-button" className={`${style.bteqaw} ${style.btnBorder}`}>
+                <div className={style.hSepGF}>
+                  <img src="../volume.svg" />
+                </div>
+              </button>
             </div>
-            <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.music}>
-              <img src="../music.svg" />
+              <button id="sound-button" className={style.bteqaw}>
+                <div className={style.hSepGF}>
+                  <img src="../music.svg" />
+                </div>
+              </button>
             </div>
           </div>
 
           <div className={style.two}>
-            <div className={style.what}>
-              <img style={{ marginLeft: "-1px" }} src="../what.svg" /> <p className={style.textW}>Как играть?</p>
+            <div className={style.help}>
+              <button id="help-button" className={`${style.bteqaw} ${style.btnBorder}`}>
+                <div className={`${style.hSepGF} ${style.helpDiv}`}>
+                  <img style={{ marginLeft: "-1px" }} src="../what.svg" /> <p className={style.text}>Как играть?</p>
+                </div>
+              </button>
             </div>
-            <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.money}>
-              <img src="../money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
+              <button id="money-button" className={`${style.bteqaw} ${style.btnBorder}`}>
+                <div className={`${style.hSepGF} ${style.helpDiv}`}>
+                  <img src="../money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
+                </div>
+              </button>
             </div>
-            <div className={style.separator}></div> {/* Добавляем линию */}
             <div className={style.collection}>
-              <img src="../collection.svg" />
+              <button id="collection-button" className={style.bteqaw}>
+                <div className={`${style.hSepGF} ${style.helpDiv}`}>
+                  <img src="../collection.svg" />
+                </div>
+              </button>
             </div>
           </div>
 
           <div className={style.three}>
             <div className={style.chat}>
-              <img src="../chat.svg" />
+              <button id="help-button" className={style.bteqaw}>
+                <div className={`${style.hSepGF} ${style.helpDiv}`}>
+                  <img src="../chat.svg" />
+                </div>
+              </button>
             </div>
           </div>
         </div>

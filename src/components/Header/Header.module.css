@@ -56,6 +56,17 @@
   padding: 3px;
 }
 
+.btnBorder::after{
+  position: absolute;
+  content: "";
+  top: 7px;
+  width: 1.5px;
+  height: 16px;
+  background: rgb(35, 29, 71);
+  border-radius: 16px;
+  right: -5.5px;
+}
+
 .volume {
   display: flex;
   align-items: center;
@@ -99,7 +110,7 @@
   padding: 3px;
 }
 
-.what {
+.help {
   display: grid;
   grid-auto-flow: column;
   gap: 9.5px;
@@ -107,7 +118,6 @@
   background: rgb(17, 13, 33);
   width: fit-content;
   border-radius: 10px;
-  padding: 3px;
 }
 
 .money {
@@ -132,15 +142,8 @@
 
 .text {
   color: white;
-  font-size: 11px;
+  font-size: 12px;
   margin-left: 5px;
-  font-family: Manrope;
-}
-
-.textW {
-  color: white;
-  font-size: 11px;
-  margin-left: 7px;
   font-family: Manrope;
 }
 
@@ -263,6 +266,24 @@
   z-index: 1;
   transition: opacity 0.32s, box-shadow 0.32s, background 0.16s;
   background: rgb(35, 29, 71);
+}
+
+.hSepGF.helpDiv{
+  width: 100% !important;
+  display: grid;
+  grid-auto-flow: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 0px 8px;
+  gap: 7px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 16px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  text-align: left;
 }
 
 .popUpMore {

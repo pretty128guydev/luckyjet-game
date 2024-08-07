@@ -5,7 +5,7 @@
   font-family: "Rocketfont";
   font-style: normal;
   font-weight: 300;
-  src: url("/public/fonts/Rocketfont-latin-ext.1054180f7.woff2") format("woff2");
+  src: url("../fonts/Rocketfont-latin-ext.1054180f7.woff2") format("woff2");
 }
 
 @font-face {
@@ -13,7 +13,7 @@
   font-family: "Rocketfont";
   font-style: normal;
   font-weight: 300;
-  src: url("/public/fonts/Rocketfont-latin.6b82a4379.woff2") format("woff2");
+  src: url("../fonts/Rocketfont-latin.6b82a4379.woff2") format("woff2");
 }
 
 .main {
@@ -507,6 +507,28 @@
   cursor: pointer;
 }
 
+.waitingBtn {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  font-family: Rocketfont;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgb(250, 250, 250);
+  text-shadow: rgb(138, 138, 138) 0px 0x 20px;
+  display: grid;
+  -webkit-box-pack: center;
+  place-content: center;
+  grid-auto-rows: max-content;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
 .cancelAfter::after {
   content: "";
   position: absolute;
@@ -516,6 +538,17 @@
   left: calc(50% - 50.5px);
   border-radius: 12px 12px 0px 0px;
   background: linear-gradient(263.87deg, rgb(245, 78, 118) 0%, rgb(252, 36, 75) 100%);
+}
+
+.waitingAfter::after {
+  content: "";
+  position: absolute;
+  width: 101px;
+  height: 3px;
+  bottom: -10px;
+  left: calc(50% - 50.5px);
+  border-radius: 12px 12px 0px 0px;
+  background: none;
 }
 
 .withdrawBtn {

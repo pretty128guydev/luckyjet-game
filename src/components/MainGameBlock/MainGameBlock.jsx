@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import "./MainGameBlock.css"; // Import the CSS file
 import usePolling from "../../hooks/usePolling";
 import useSmoothIncrement from "../../hooks/useSmoothIncrement";
@@ -40,7 +40,6 @@ const MainGameBlock = () => {
   };
 
   const handleMoneyIncrement = (value) => {
-    console.log(value)
     dispatch(increaseMoney(value));
   }
 
@@ -63,6 +62,12 @@ const MainGameBlock = () => {
   const displayCoefficient = useSmoothIncrement(targetCoefficient);
 
   useEffect(() => {
+
+    if((historyData?.state === "betting" || historyData?.state === "waiting")
+     && status === "CANCEL") {
+      setStatus("WAITING");
+    } 
+
     if (historyData?.state === "flying" && status !== "START") {
       setStatus("WITHDRAW");
     }
@@ -76,8 +81,6 @@ const MainGameBlock = () => {
         consumAmount: amount,
         earnAmount: '-'
       }
-
-      console.log(scoreList)
 
       dispatch(saveScore(scoreList))
     }
@@ -100,7 +103,7 @@ const MainGameBlock = () => {
     if (showToast) {
       setShowToast(false)
     }
-  }, 1500)
+  }, 2000)
 
   useEffect(() => {
     setTotalAmount(amount * displayCoefficient);
@@ -120,13 +123,9 @@ const MainGameBlock = () => {
         alert("Недостаточно средств");
       }
 
-      if(status === "START") {
-        setStatus("CANCEL");
-      } else if(status === "CANCEL") {
-        setStatus("START");
+      if (status === "START") {
+        setStatus("WAITING");
       }
-
-
     } else if (historyData?.state === "flying") {
       if (status === "START") {
         setStatus("CANCEL")
@@ -144,8 +143,6 @@ const MainGameBlock = () => {
           consumAmount: amount.toFixed(2),
           earnAmount: (displayCoefficient * amount).toFixed(2)
         }
-
-        console.log(scoreList)
 
         dispatch(saveScore(scoreList))
       }
@@ -182,9 +179,9 @@ const MainGameBlock = () => {
           </div>
         </>
         : <div style={{ height: "100%" }} className={`game-container ${historyData?.state === "waiting" ? "loading" : ""} ${flyAway ? "animation-stopped" : ""}`}>
-          <div className="star"></div>
-          <div className="cloud"></div>
-          {showToast && <div className="toast">
+          <div className={`star ${flyAway ? "animation-stopped" : ""}`}></div>
+          <div className={`cloud ${flyAway ? "animation-stopped" : ""}`}></div>
+          {<div className={`toast ${showToast ? "show" : ""}`}>
             <div id="win-notify" className="win-notify">
               <div className="eGpkga">
                 <span>You managed to get it!</span>
@@ -277,8 +274,8 @@ const MainGameBlock = () => {
                 </div>
               </div>
             </div>
-            <button className={`${style.betAfter} ${status === "START" ? style.betAfter : status === "WITHDRAW" ? style.withdrawAfter : style.cancelAfter}`} onClick={handleBet}>
-              <div className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : style.cancelBtn}>
+            <button className={`${style.betAfter} ${status === "START" ? style.betAfter : status === "WITHDRAW" ? style.withdrawAfter : status === "WAITING" ? style.waitingAfter : style.cancelAfter}`} disabled = { status === "WAITING" ? 'disabled' : ''} onClick={handleBet}>
+              <div className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : status === "WAITING" ? style.waitingBtn : style.cancelBtn}>
                 {status === "WITHDRAW" ? (
                   <div>{(totalAmount).toFixed(2)} </div>
                 ) : null}
