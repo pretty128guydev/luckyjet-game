@@ -230,7 +230,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={formatNumber(amount)} onChange={handleAmountChange} />
+                  <input className={style.input} value={`${formatNumber(amount)}\u00A0₽`} onChange={handleAmountChange} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>
@@ -270,7 +270,7 @@ const MainGameBlock = () => {
             <button className={`${style.betAfter} ${status === "START" ? style.betAfter : status === "WITHDRAW" ? style.withdrawAfter : status === "WAITING" ? style.waitingAfter : style.cancelAfter}`} disabled={status === "WAITING" ? 'disabled' : ''} onClick={handleBet}>
               <div className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : status === "WAITING" ? style.waitingBtn : style.cancelBtn}>
                 {status === "WITHDRAW" ? (
-                  <div>{formatNumber(totalAmount)} </div>
+                  <div>{formatNumber(totalAmount)}&nbsp;₽</div>
                 ) : null}
                 <div>{status}</div>
               </div>
@@ -308,7 +308,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={formatNumber(200)} />
+                  <input className={style.input} value={`${formatNumber(200)}\u00A0₽`} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>
