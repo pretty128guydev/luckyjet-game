@@ -23,6 +23,10 @@ const MainGameBlock = () => {
   const withdrawInfo = useSelector((state) => state.score.withdrawInfo);
   const current_amount = useSelector((state) => state.money.currentMoney);
 
+  useEffect(() => {
+    console.log("Current money" , current_amount)
+  }, [current_amount])
+
   const [amount, setAmount] = useState(20);
   const [status, setStatus] = useState("START");
 
@@ -54,6 +58,11 @@ const MainGameBlock = () => {
   // console.log(targetCoefficient);
   const displayCoefficient = useSmoothIncrement(targetCoefficient);
 
+  const formatNumber = (number) => {
+    const formattedNumber = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(number)
+    return formattedNumber.replace(',', '.');
+  }
+
   useEffect(() => {
     if ((historyData?.state === "betting" || historyData?.state === "waiting")
       && status === "CANCEL") {
@@ -70,8 +79,8 @@ const MainGameBlock = () => {
 
       const scoreList = {
         time: time24,
-        coefficient: displayCoefficient.toFixed(2),
-        consumAmount: amount.toFixed(2),
+        coefficient: formatNumber(displayCoefficient),
+        consumAmount: formatNumber(amount),
         earnAmount: '-'
       }
 
@@ -112,7 +121,6 @@ const MainGameBlock = () => {
   }, [displayCoefficient, historyData?.current_coefficients]);
 
   const handleBet = () => {
-    console.log(status)
     if (status === "START") {
       if (current_amount - amount >= 0) {
         if (historyData?.state === "betting" || historyData?.state === "waiting") {
@@ -132,18 +140,23 @@ const MainGameBlock = () => {
 
       const scoreList = {
         time: time24,
-        coefficient: displayCoefficient?.toFixed(2),
-        consumAmount: amount.toFixed(2),
-        earnAmount: (displayCoefficient * amount).toFixed(2)
+        coefficient: formatNumber(displayCoefficient),
+        consumAmount: formatNumber(amount),
+        earnAmount: formatNumber(displayCoefficient * amount)
       }
 
       dispatch(saveScore(scoreList))
-      dispatch(increaseMoney(amount * withdrawValue));
+
+      console.log("Amount = ", amount, "WithdrawValue", withdrawValue);
+      // dispatch(increaseMoney(amount * withdrawValue));
     }
   }
 
-
-// console.log(historyData?.state);
+  useEffect(() => {
+    if(status === "START" && withdrawValue !== 1) {
+      dispatch(increaseMoney(amount * withdrawValue));
+    }
+  }, [withdrawValue])
 
   return (
     <>
@@ -166,17 +179,17 @@ const MainGameBlock = () => {
               <div className="eGpkga">
                 <span>You managed to get it!</span>
                 <h2>
-                  x {withdrawValue.toFixed(2)}
+                  x {formatNumber(withdrawValue)}
                 </h2>
               </div>
               <div className="bjRgBy">
-                <h2>{(amount * withdrawValue).toFixed(2)}&nbsp;₽</h2>
+                <h2>{formatNumber(amount * withdrawValue)}&nbsp;₽</h2>
                 <span>Your winnings</span>
               </div>
             </div>
           </div>}
           <div className="game-center-text">
-            <div className={`current-coffecient ${flyAway ? "animation-coffecient" : ''}`}><span style={{ fontSize: "40px" }}>x</span> {displayCoefficient.toFixed(2)}</div>
+            <div className={`current-coffecient ${flyAway ? "animation-coffecient" : ''}`}><span style={{ fontSize: "40px" }}>x</span> {formatNumber(displayCoefficient)}</div>
             {historyData?.state === "ending" && flyAway && <h3 className="game-text flew-away">Flew Away</h3>}
           </div>
           <GameAnimation
@@ -217,7 +230,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={amount} onChange={handleAmountChange} />
+                  <input className={style.input} value={formatNumber(amount)} onChange={handleAmountChange} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>
@@ -257,7 +270,7 @@ const MainGameBlock = () => {
             <button className={`${style.betAfter} ${status === "START" ? style.betAfter : status === "WITHDRAW" ? style.withdrawAfter : status === "WAITING" ? style.waitingAfter : style.cancelAfter}`} disabled={status === "WAITING" ? 'disabled' : ''} onClick={handleBet}>
               <div className={status === "START" ? style.stavkabtn : status === "WITHDRAW" ? style.withdrawBtn : status === "WAITING" ? style.waitingBtn : style.cancelBtn}>
                 {status === "WITHDRAW" ? (
-                  <div>{(totalAmount).toFixed(2)} </div>
+                  <div>{formatNumber(totalAmount)} </div>
                 ) : null}
                 <div>{status}</div>
               </div>
@@ -295,7 +308,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={200} />
+                  <input className={style.input} value={formatNumber(200)} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>

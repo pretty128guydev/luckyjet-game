@@ -13,7 +13,8 @@ const useSmoothMoney = (targetValue, duration = 500) => {
     const step = (timestamp) => {
       const progress = Math.min((timestamp - start.current) / duration, 1);
       const newValue = initialValue.current + (targetValue - initialValue.current) * progress;
-      setCurrentValue(parseFloat(newValue.toFixed(2)));
+
+      setCurrentValue(newValue);
 
       if (progress < 1) {
         frame.current = requestAnimationFrame(step);

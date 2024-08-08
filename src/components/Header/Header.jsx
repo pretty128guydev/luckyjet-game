@@ -21,6 +21,11 @@ const Header = () => {
     setShowMore(false);
   }
 
+  const formatNumber = (number) => {
+    const formattedNumber = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(number)
+    return formattedNumber.replace(',', '.');
+  }
+
   const smoothMoney = useSmoothMoney(moneyData);
 
   useEffect(() => {
@@ -67,7 +72,7 @@ const Header = () => {
             <div className={style.money}>
               <button id="money-button" className={`${style.bteqaw} ${style.btnBorder}`}>
                 <div className={`${style.hSepGF} ${style.helpDiv}`}>
-                  <img src="../money.svg" style={{width: "21px", height: "20px"}}/> <div className={style.balance}>{(smoothMoney.toFixed(2)).toLocaleString()} ₽</div>
+                  <img src="../money.svg" style={{width: "21px", height: "20px"}}/> <div className={style.balance}>{formatNumber(smoothMoney)} ₽</div>
                 </div>
               </button>
             </div>
