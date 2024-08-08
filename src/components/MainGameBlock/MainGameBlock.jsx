@@ -32,24 +32,17 @@ const MainGameBlock = () => {
   const seconds = now.getSeconds().toString().padStart(2, '0');
   const time24 = `${hours}:${minutes}:${seconds}`;
 
+  usePolling(() => dispatch(fetchHistoryData()), 1000);
+
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
   };
   const handleAmountIncrement = (value) => {
     setAmount(amount + value);
   };
-
-  const handleMoneyIncrement = (value) => {
-    dispatch(increaseMoney(value));
-  }
-
-  usePolling(() => dispatch(fetchHistoryData()), 1000);
-  // console.log(withdrawInfo)
-
   const handleFlyAway = () => {
     setFlyAway(true);
   };
-
   // Function to restart animations
   const restartAnimations = () => {
     setFlyAway(false); // Reset flyAway state
@@ -61,18 +54,10 @@ const MainGameBlock = () => {
   // console.log(targetCoefficient);
   const displayCoefficient = useSmoothIncrement(targetCoefficient);
 
-  const loadingStyle = {};
-
   useEffect(() => {
     if ((historyData?.state === "betting" || historyData?.state === "waiting")
       && status === "CANCEL") {
       setStatus("WAITING");
-
-      const loadingStyle = {
-        width: status === "WAITING" ? "100%" : "0%", // Adjust the width as needed
-        transition: "width 1s ease-in-out" // Smooth transition for width change
-      }
-    
     }
 
     if (historyData?.state === "flying" && status !== "START") {
@@ -80,19 +65,21 @@ const MainGameBlock = () => {
       dispatch(decreaseMoney(amount));
     }
 
-    console.log("status = ", status, "flyAway = ", flyAway)
-    // console.log("status = ", status, "history = ", historyData?.state, "current_coefficient = ", current_coefficient, "history.current = ", historyData?.current_coefficients[0])
     if (status === "WITHDRAW" && flyAway) {
       setStatus("START");
 
       const scoreList = {
         time: time24,
         coefficient: displayCoefficient.toFixed(2),
-        consumAmount: amount,
+        consumAmount: amount.toFixed(2),
         earnAmount: '-'
       }
 
       dispatch(saveScore(scoreList))
+    }
+
+    if(status === "WAITING" && historyData?.state === "ending") {
+      setStatus("START");
     }
   }, [historyData?.state, flyAway]);
 
@@ -125,53 +112,38 @@ const MainGameBlock = () => {
   }, [displayCoefficient, historyData?.current_coefficients]);
 
   const handleBet = () => {
-    console.log(historyData?.state)
-    if (historyData?.state === "betting") {
+    console.log(status)
+    if (status === "START") {
       if (current_amount - amount >= 0) {
+        if (historyData?.state === "betting" || historyData?.state === "waiting") {
+          setStatus("WAITING");
+        } else {
+          setStatus("CANCEL");
+        }
       } else {
         alert("Недостаточно средств");
       }
+    } else if (status === "CANCEL") {
+      setStatus("START");
+    } else if (status === "WITHDRAW") {
+      setStatus("START");
+      setShowToast(true);
+      setWithdrawValue(displayCoefficient);
 
-      if (status === "START") {
-        setStatus("WAITING");
+      const scoreList = {
+        time: time24,
+        coefficient: displayCoefficient?.toFixed(2),
+        consumAmount: amount.toFixed(2),
+        earnAmount: (displayCoefficient * amount).toFixed(2)
       }
-    } else if (historyData?.state === "flying") {
-      if (status === "START") {
-        setStatus("CANCEL")
-      } else if (status === "CANCEL") {
-        setStatus("START");
-      } else if (status === "WITHDRAW") {
-        setStatus("START");
 
-        setShowToast(true);
-        setWithdrawValue(displayCoefficient);
-
-        console.log(amount)
-
-        const scoreList = {
-          time: time24,
-          coefficient: displayCoefficient?.toFixed(2),
-          consumAmount: amount,
-          earnAmount: (displayCoefficient * amount).toFixed(2)
-        }
-
-        dispatch(saveScore(scoreList))
-      }
-    } else if (historyData?.state === "ending") {
-      if (status === "START") {
-        setStatus("CANCEL");
-      } else if (status === "CANCEL") {
-        setStatus("START");
-      }
-    } else if (historyData?.state === "waiting") {
-      if (status === "START") {
-        setStatus("CANCEL");
-      }
+      dispatch(saveScore(scoreList))
+      dispatch(increaseMoney(amount * withdrawValue));
     }
-  };
+  }
 
 
-  console.log(historyData?.state);
+// console.log(historyData?.state);
 
   return (
     <>
@@ -180,9 +152,8 @@ const MainGameBlock = () => {
           <div className="loading-container">
             <img src="/loading.svg" alt="" />
             <h3 className="waiting-text">Waiting for the next <br></br>round</h3>
-            <div style={{ width: "245px" }}>
+            <div style={{ width: "245px", background: "rgba(255, 255, 255, 0.1)", borderRadius: "24px", height: "5px" }}>
               <div className="jMhEmG">
-                {/* <div className="loading-bar" style={loadingStyle}></div> */}
               </div>
             </div>
           </div>
@@ -198,7 +169,7 @@ const MainGameBlock = () => {
                   x {withdrawValue.toFixed(2)}
                 </h2>
               </div>
-              <div className="bjRgBy" onClick={() => handleMoneyIncrement(amount * withdrawValue)}>
+              <div className="bjRgBy">
                 <h2>{(amount * withdrawValue).toFixed(2)}&nbsp;₽</h2>
                 <span>Your winnings</span>
               </div>
@@ -324,7 +295,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={200}/>
+                  <input className={style.input} value={200} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>

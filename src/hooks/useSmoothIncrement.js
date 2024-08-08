@@ -17,7 +17,7 @@ const useSmoothIncrement = (targetCoefficient) => {
       });
 
       // Smoothly transition to the next increment step
-    }, 70); // Shorter interval for smoother increments
+    }, 100); // Shorter interval for smoother increments
 
     return () => clearInterval(interval);
   }, [targetCoefficient]);

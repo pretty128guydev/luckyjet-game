@@ -27,8 +27,13 @@
 }
 
 .history_box {
-    animation: 0.32s ease-in-out 0s 1 normal forwards running dlprxA;
+    /* animation: 0.32s ease-in-out 0s 1 normal forwards running dlprxA; */
     overflow: hidden;
+    /* transition: 0.32s; */
+}
+
+.history_box_animated {
+    animation: dlprxA 0.32s ease-in-out forwards;
     transition: 0.32s;
 }
 

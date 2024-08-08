@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { saveRoundHistory } from "../../store/actions/scoreActions";
 import RoundHistory from "../RoundHistory/RoundHistory";
 import style from "./Header.module.css";
+import useSmoothMoney from "../../hooks/useSmoothMoney";
 
 const Header = () => {
   const moneyData = useSelector((state) => state.money.currentMoney);
@@ -19,6 +20,8 @@ const Header = () => {
   const handlCloseMoreButtonClick = () => {
     setShowMore(false);
   }
+
+  const smoothMoney = useSmoothMoney(moneyData);
 
   useEffect(() => {
     if (historyData?.state === 'ending') {
@@ -57,21 +60,21 @@ const Header = () => {
             <div className={style.help}>
               <button id="help-button" className={`${style.bteqaw} ${style.btnBorder}`}>
                 <div className={`${style.hSepGF} ${style.helpDiv}`}>
-                  <img style={{ marginLeft: "-1px" }} src="../what.svg" /> <p className={style.text}>Как играть?</p>
+                  <img style={{ marginLeft: "-1px", width: "21px", height: "20px"}} src="../what.svg" /> <p className={style.text}>Как играть?</p>
                 </div>
               </button>
             </div>
             <div className={style.money}>
               <button id="money-button" className={`${style.bteqaw} ${style.btnBorder}`}>
                 <div className={`${style.hSepGF} ${style.helpDiv}`}>
-                  <img src="../money.svg" /> <p className={style.text}>{moneyData?.toLocaleString()} ₽</p>
+                  <img src="../money.svg" style={{width: "21px", height: "20px"}}/> <div className={style.balance}>{(smoothMoney.toFixed(2)).toLocaleString()} ₽</div>
                 </div>
               </button>
             </div>
             <div className={style.collection}>
               <button id="collection-button" className={style.bteqaw}>
-                <div className={`${style.hSepGF} ${style.helpDiv}`}>
-                  <img src="../collection.svg" />
+                <div className={`${style.hSepGF} ${style.collectionDiv}`}>
+                  <img src="../collection.svg" width="21px" height="20px" style={{width: "21px", height: "20px"}}/>
                 </div>
               </button>
             </div>
@@ -80,7 +83,7 @@ const Header = () => {
           <div className={style.three}>
             <div className={style.chat}>
               <button id="help-button" className={style.bteqaw}>
-                <div className={`${style.hSepGF} ${style.helpDiv}`}>
+                <div className={`${style.hSepGF} ${style.collectionDiv}`}>
                   <img src="../chat.svg" />
                 </div>
               </button>

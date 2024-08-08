@@ -407,14 +407,22 @@
 }
 
 .input {
-  color: white;
-  font-family: "Rocketfont";
-  font-size: 14.5px;
-  margin-left: -5px;
-  background-color: transparent;
   outline: none;
-  border: none;
+  width: 100%;
+  min-width: 0px;
+  font-family: Rocketfont;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0px;
   text-align: center;
+  color: white;
+  caret-color: white;
+  padding: 0px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .button {

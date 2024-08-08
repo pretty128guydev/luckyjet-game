@@ -95,7 +95,7 @@
 
 
 
-.betDone {
+.betItem {
   width: 100%;
   position: relative;
   padding-left: 12px;
@@ -109,6 +109,26 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
+  height: 32px;
+  padding-right: 2px;
+  margin-bottom: 8px;
+}
+
+.withdrawbetItem {
+  width: 100%;
+  position: relative;
+  padding-left: 12px;
+  background: rgba(148, 78, 245, 0.25);
+  border-radius: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+  -webkit-box-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  border: 1px solid rgba(148, 78, 245, 0.5);
   height: 32px;
   padding-right: 2px;
   margin-bottom: 8px;

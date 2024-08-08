@@ -3,14 +3,14 @@ import style from "./HistoryBlock.module.css";
 import { useState } from "react";
 
 const HistoryBlock = () => {
-  const history_data = useSelector((state) => state.history.historyData, shallowEqual());
   const my_score_list = useSelector((state) => state.score.scoreList, shallowEqual());
 
-  const cash_outs = history_data?.cash_outs || [];
+  const trimmedScoreList = my_score_list.length > 10 ? my_score_list.slice(my_score_list.length - 10, my_score_list.length) : my_score_list;
+
+  console.log(trimmedScoreList)
+  console.log(my_score_list)
 
   const [activeTab, setActiveTab] = useState('tab-0');
-  const [activeScoreMenu, setActiveScoreMenu] = useState('topWins');
-  const [activeDateMenu, setActiveDateMenu] = useState('year');
   const [topMenuClick, setTopMenuClick] = useState(false);
   const [dateMenuClick, setDateMenuClick] = useState(false);
 
@@ -49,22 +49,22 @@ const HistoryBlock = () => {
         </div>
       </div>
       <div className={style.betList}>
-        {activeTab === 'tab-1' && my_score_list.length > 0 && 
+        {activeTab === 'tab-1' && trimmedScoreList.length > 0 && 
           (
             <>
-              <div className={style.betDone}>
-                <div className={style.time}>{my_score_list[my_score_list.length - 1]?.time}</div>
-                <div className={style.price} style={{ fontSize: my_score_list[my_score_list.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{my_score_list[my_score_list.length - 1]?.consumAmount} ₽</div>
+              <div className={`${trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 0 ? style.withdrawbetItem : style.betItem}`}>
+                <div className={style.time}>{trimmedScoreList[trimmedScoreList.length - 1]?.time}</div>
+                <div className={style.price} style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount} ₽</div>
                 <div className={
-                  Math.floor(my_score_list[my_score_list.length - 1]?.coefficient) < 2
+                  Math.floor(trimmedScoreList[trimmedScoreList.length - 1]?.coefficient) < 2
                     ? style.low
-                    : Math.floor(my_score_list[my_score_list.length - 1]?.coefficient) < 10
+                    : Math.floor(trimmedScoreList[trimmedScoreList.length - 1]?.coefficient) < 10
                       ? style.medium
                       : style.high
-                } style={{ fontSize: my_score_list[my_score_list.length - 1]?.coefficient > 100 ? '11px' : '12px' }}>
-                  {my_score_list[my_score_list.length - 1]?.coefficient}x
+                } style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.coefficient > 100 ? '11px' : '12px' }}>
+                  {trimmedScoreList[trimmedScoreList.length - 1]?.coefficient}x
                 </div>
-                <div className={style.cashOut} style={{ fontSize: my_score_list[my_score_list.length - 1]?.earnAmount > 1000 ? '11px' : '12px' }}>{my_score_list[my_score_list.length - 1]?.earnAmount > 0 ? my_score_list[my_score_list.length - 1]?.earnAmount + '$' : '-'}</div>
+                <div className={`${style.cashOut}`} style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 1000 ? '11px' : '12px' }}>{trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 0 ? trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount + '$' : '-'}</div>
                 <div className={style.sb}>
                   <div className={style.send}>
                     <img src="../send.svg" alt="" />
@@ -74,8 +74,8 @@ const HistoryBlock = () => {
                   </div>
                 </div>
               </div>
-              {my_score_list.slice(0, -1).reverse().map((scoreList) => (
-                <div className={style.betDone}>
+              {trimmedScoreList.slice(0, -1).reverse().map((scoreList) => (
+                <div className={`${scoreList.earnAmount > 0 ? style.withdrawbetItem : style.betItem}`}>
                 <div className={style.time}>{scoreList?.time}</div>
                 <div className={style.price} style={{ fontSize: scoreList?.consumAmount > 1000 ? '11px' : '12px' }}>{scoreList?.consumAmount} ₽</div>
                 <div className={
@@ -87,7 +87,7 @@ const HistoryBlock = () => {
                 } style={{ fontSize: scoreList?.coefficient > 100 ? '11px' : '12px' }}>
                   {scoreList?.coefficient}x
                 </div>
-                <div className={style.cashOut} style={{ fontSize: scoreList?.earnAmount > 1000 ? '11px' : '12px' }}>{scoreList?.earnAmount > 0 ? scoreList?.earnAmount + '$' : '-'}</div>
+                <div className={`${style.cashOut}`} style={{ fontSize: scoreList?.earnAmount > 1000 ? '11px' : '12px' }}>{scoreList?.earnAmount > 0 ? scoreList?.earnAmount + '$' : '-'}</div>
                 <div className={style.sb}>
                   <div className={style.send}>
                     <img src="../send.svg" alt="" />
