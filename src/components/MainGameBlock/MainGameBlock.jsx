@@ -79,8 +79,8 @@ const MainGameBlock = () => {
 
       const scoreList = {
         time: time24,
-        coefficient: formatNumber(displayCoefficient),
-        consumAmount: formatNumber(amount),
+        coefficient: displayCoefficient,
+        consumAmount: amount,
         earnAmount: '-'
       }
 
@@ -140,10 +140,12 @@ const MainGameBlock = () => {
 
       const scoreList = {
         time: time24,
-        coefficient: formatNumber(displayCoefficient),
-        consumAmount: formatNumber(amount),
-        earnAmount: formatNumber(displayCoefficient * amount)
+        coefficient: displayCoefficient,
+        consumAmount: amount,
+        earnAmount: displayCoefficient * amount
       }
+
+      console.log(scoreList)
 
       dispatch(saveScore(scoreList))
 
