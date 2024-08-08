@@ -191,7 +191,7 @@ const MainGameBlock = () => {
             </div>
           </div>}
           <div className="game-center-text">
-            <div className={`current-coffecient ${flyAway ? "animation-coffecient" : ''}`}><span style={{ fontSize: "40px" }}>x</span> {formatNumber(displayCoefficient)}</div>
+            <div className={`current-coffecient ${flyAway ? "animation-coffecient" : ''}`}><span style={{ fontSize: "40px" }}>x</span>{formatNumber(displayCoefficient)}</div>
             {historyData?.state === "ending" && flyAway && <h3 className="game-text flew-away">Flew Away</h3>}
           </div>
           <GameAnimation
@@ -212,7 +212,7 @@ const MainGameBlock = () => {
               <div className={style.autoWithdrawalText}>Auto withdrawal</div>
             </div>
             <div className={style.coefInput}>
-              <input id="coef-input" pattern="\d*(\s|\d)*(\.|,)?\d?\d?" type="text" inputmode="decimal" className={`${style.jwCcuy}`} value="1.00" />
+              <input id="coef-input" pattern="\d*(\s|\d)*(\.|,)?\d?\d?" type="text" inputmode="decimal" className={`${style.jwCcuy}`} value="x 2.00" />
               <div className={`${style.iBYHtE}`}>
                 <div>x</div>
                 <div>2.00</div>
@@ -232,7 +232,7 @@ const MainGameBlock = () => {
                   </button>
                 </div>
                 <div className={style.currentAmount}>
-                  <input className={style.input} value={`${formatNumber(amount)}\u00A0₽`} onChange={handleAmountChange} />
+                  <input className={style.input} value={`${amount}\u00A0₽`} onChange={handleAmountChange} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>
@@ -290,7 +290,7 @@ const MainGameBlock = () => {
               <div className={style.autoWithdrawalText}>Auto withdrawal</div>
             </div>
             <div className={style.coefInput}>
-              <input id="coef-input" pattern="\d*(\s|\d)*(\.|,)?\d?\d?" type="text" inputmode="decimal" className={`${style.jwCcuy}`} value="1.00" />
+              <input id="coef-input" pattern="\d*(\s|\d)*(\.|,)?\d?\d?" type="text" inputmode="decimal" className={`${style.jwCcuy}`} value="x 2.00" />
               <div className={`${style.iBYHtE}`}>
                 <div>x</div>
                 <div>2.00</div>
@@ -309,8 +309,8 @@ const MainGameBlock = () => {
 
                   </button>
                 </div>
-                <div className={style.currentAmount}>
-                  <input className={style.input} value={`${formatNumber(200)}\u00A0₽`} />
+                <div className={style.currentAmount}> 
+                  <input className={style.input} value={`${200}\u00A0₽`} />
                 </div>
                 <div className={style.plus}>
                   <button id="bet-control-plus" className={style.btnMinus}>

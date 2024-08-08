@@ -60,17 +60,17 @@ const HistoryBlock = () => {
             <>
               <div className={`${trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 0 ? style.withdrawbetItem : style.betItem}`}>
                 <div className={style.time}>{trimmedScoreList[trimmedScoreList.length - 1]?.time}</div>
-                <div className={style.price} style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{formatNumber(trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount)} ₽</div>
+                <div className={style.price} style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 10000 ? '9px' : trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{formatNumber(trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount)} ₽</div>
                 <div className={
                   Math.floor(trimmedScoreList[trimmedScoreList.length - 1]?.coefficient) < 2
                     ? style.low
                     : Math.floor(trimmedScoreList[trimmedScoreList.length - 1]?.coefficient) < 10
                       ? style.medium
                       : style.high
-                } style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.coefficient > 100 ? '11px' : '12px' }}>
+                } style={{ fontSize: '12px' }}>
                   {formatNumber(trimmedScoreList[trimmedScoreList.length - 1]?.coefficient)}x
                 </div>
-                <div className={`${style.cashOut}`} style={{ fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 1000 ? '11px' : '12px' }}>{trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 0 ? formatNumber(trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount) + '$' : '-'}</div>
+                <div className={`${style.cashOut}`} style={{fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 10000 ? '9px' : trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount > 0 ? formatNumber(trimmedScoreList[trimmedScoreList.length - 1]?.earnAmount) + '$' : '-'}</div>
                 <div className={style.sb}>
                   <div className={style.send}>
                     <img src="../send.svg" alt="" />
@@ -83,17 +83,17 @@ const HistoryBlock = () => {
               {trimmedScoreList.slice(0, -1).reverse().map((scoreList) => (
                 <div className={`${scoreList.earnAmount > 0 ? style.withdrawbetItem : style.betItem}`}>
                   <div className={style.time}>{scoreList?.time}</div>
-                  <div className={style.price} style={{ fontSize: scoreList?.consumAmount > 1000 ? '11px' : '12px' }}>{formatNumber(scoreList?.consumAmount)} ₽</div>
+                  <div className={style.price} style={{fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 10000 ? '9px' : trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{formatNumber(scoreList?.consumAmount)} ₽</div>
                   <div className={
                     Math.floor(scoreList?.coefficient) < 2
                       ? style.low
                       : Math.floor(scoreList?.coefficient) < 10
                         ? style.medium
                         : style.high
-                  } style={{ fontSize: scoreList?.coefficient > 100 ? '11px' : '12px' }}>
+                  } style={{fontSize: "12px" }}>
                     {formatNumber(scoreList?.coefficient)}x
                   </div>
-                  <div className={`${style.cashOut}`} style={{ fontSize: scoreList?.earnAmount > 1000 ? '11px' : '12px' }}>{scoreList?.earnAmount > 0 ? formatNumber(scoreList?.earnAmount) + '$' : '-'}</div>
+                  <div className={`${style.cashOut}`} style={{fontSize: trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 10000 ? '9px' : trimmedScoreList[trimmedScoreList.length - 1]?.consumAmount > 1000 ? '11px' : '12px' }}>{scoreList?.earnAmount > 0 ? formatNumber(scoreList?.earnAmount) + '$' : '-'}</div>
                   <div className={style.sb}>
                     <div className={style.send}>
                       <img src="../send.svg" alt="" />
