@@ -55,7 +55,7 @@ const Header = () => {
             <div className={style.music}>
               <button id="sound-button" className={style.bteqaw}>
                 <div className={style.hSepGF}>
-                  <img src="../music.svg" />
+                  <img src="/music.svg" />
                 </div>
               </button>
             </div>
